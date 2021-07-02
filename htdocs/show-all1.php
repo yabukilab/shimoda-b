@@ -8,7 +8,7 @@
   <body>
 <?php
 require 'db.php';                               # 接続
-$sql = 'SELECT * FROM table1';                  # SQL文
+$sql = 'SELECT * FROM testtable';                  # SQL文
 $prepare = $db->prepare($sql);                  # 準備
 $prepare->execute();                            # 実行
 $result = $prepare->fetchAll(PDO::FETCH_ASSOC); # 結果の取得
@@ -18,7 +18,12 @@ foreach ($result as $row) {
   $varcharA = h($row['varcharA']);
   $intA     = h($row['intA']);
   $intB     = h($row['intB']);
-  echo "{$id}, {$varcharA}, {$intA}, {$intB}<br/>";
+  $intC     = h($row['intC']);
+  $intD     = h($row['intD']);
+  $intE     = h($row['intE']);
+  $intF     = h($row['intF']);
+
+  echo "{$id}, {$varcharA}, {$intA}, {$intB}, {$intC}, {$intD}, {$intE}, {$intF}<br/>";
 }
 ?>
   </body>
