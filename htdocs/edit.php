@@ -40,10 +40,6 @@
 
 				$pro_name = $rec['name'];
 				$pro_price = $rec['price'];
-				$pro_syuppan = $rec['syuppan'];
-				$pro_nouki = $rec['nouki'];
-				$pro_gaku = $rec['gaku'];
-				$pro_gakun = $rec['gakun'];
 			}
 			catch(Exception $e)
 			{
@@ -62,15 +58,7 @@
 		<input type="text" name="name" style="width:200px" value="<?php print $pro_name; ?>"><br />
 		価格<br />
 		<input type="text" name="price" style="width:50px" value="<?php print $pro_price; ?>">円<br />
-		出版社<br />
-		<input type="text" name="syuppan" style="width:200px" value="<?php print $pro_syuppan; ?>"><br />
-		納期<br />
-		<input type="text" name="nouki" style="width:200px" value="<?php print $pro_nouki; ?>"><br />
-		学科<br />
-		<input type="text" name="gaku" style="width:200px" value="<?php print $pro_gaku; ?>"><br />
-		学年<br />
-		<input type="text" name="gakun" style="width:200px" value="<?php print $pro_gakun; ?>"><br />
-		<br/>
+		<br />
 		<input type="button" onclick="history.back()" value="戻る">
 		<input type="submit" value="ＯＫ">
 		</form>

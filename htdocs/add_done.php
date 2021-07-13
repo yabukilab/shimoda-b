@@ -24,29 +24,29 @@
 				print'価格が受信できません。';
 				exit();
 			}
-			if (isset($_SESSION['syuppan'])) {
-				$pro_syuppan=$_SESSION['syuppan'];
+			if (isset($_SESSION['shupan'])) {
+				$pro_shupan=$_SESSION['shupan'];
 			}
 			else{
 				print'出版社が受信できません。';
 				exit();
 			}
-			if (isset($_SESSION['nouki'])) {
-				$pro_nouki=$_SESSION['nouki'];
+            if (isset($_SESSION['noukinashi'])) {
+				$pro_noukinashi=$_SESSION['noukinashi'];
 			}
 			else{
 				print'納期が受信できません。';
 				exit();
 			}
-			if (isset($_SESSION['gaku'])) {
-				$pro_gaku=$_SESSION['gaku'];
+			if (isset($_SESSION['dept'])) {
+				$pro_gaka=$_SESSION['dept'];
 			}
 			else{
 				print'学科が受信できません。';
 				exit();
 			}
 			if (isset($_SESSION['grade'])) {
-				$pro_gakun=$_SESSION['grade'];
+				$pro_gakunen=$_SESSION['grade'];
 			}
 			else{
 				print'学年が受信できません。';
@@ -61,25 +61,24 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-				$sql='INSERT INTO mst_product(name,price,syuppan,nouki,gaku,gakun) VALUES (:name, :price, :syuppan, :nouki, :gaku, :grade)';
+				$sql='INSERT INTO mst_product(name,price,shupan,noukinashi,gaka,gakunen) VALUES (:name, :price,:shupan,:noukinashi,:dept,:grade)';
 				$prepare=$db->prepare($sql);
 				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
 				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
-				$prepare->bindValue(':syuppan', $pro_syuppan, PDO::PARAM_STR);
-				$prepare->bindValue(':nouki', $pro_nouki, PDO::PARAM_STR);
-				$prepare->bindValue(':gaku', $pro_gaku, PDO::PARAM_STR);
-				$prepare->bindValue(':grade', $pro_gakun, PDO::PARAM_INT);
+				$prepare->bindValue(':shupan', $pro_shupan, PDO::PARAM_INT);
+				$prepare->bindValue(':noukinashi', $pro_noukinashi, PDO::PARAM_INT);
+				$prepare->bindValue(':dept', $pro_gaka, PDO::PARAM_INT);
+				$prepare->bindValue(':grade', $pro_gakunen, PDO::PARAM_INT);
 				$prepare->execute();
 
 				$db=null;
 
-				print h($pro_name).' ';
-				print'<br/>';
-				print h($pro_price).' ';
-				print h($pro_syuppan).' ';
-				print h($pro_nouki).' ';
-				print h($pro_gaku).' ';
-				print h($pro_gakun).' ';
+				print h($pro_name).'<br /> ';
+				print h($pro_price);
+				print h($pro_shupan);
+				print h($pro_noukinashi);
+				print h($pro_gaka);
+				print h($pro_gakunen);
 				print 'を追加しました。<br />';
 
 			}

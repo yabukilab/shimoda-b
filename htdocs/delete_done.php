@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>教科書削除</title>
+		<title>商品削除</title>
 	</head>
 	<body>
 		<?php
@@ -14,7 +14,7 @@
 				$pro_code=$_SESSION['code'];
 			}
 			else{
-				print'教科書コードが受信できません。';
+				print'商品コードが受信できません。';
 				exit();
 			}
 			session_unset();// セッション変数をすべて削除

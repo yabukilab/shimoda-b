@@ -30,7 +30,7 @@
 					$rec=$prepare->fetch(PDO::FETCH_ASSOC);
 					print h($rec['code']).' ';
 					print h($rec['name']).' ';
-					print h($rec['price']).'円';
+					print h($rec['price']);
 					print '<br />';					
 
 				}
