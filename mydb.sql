@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.4.19-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: study
+-- Host: localhost    Database: mydb
 -- ------------------------------------------------------
 -- Server version	10.4.19-MariaDB
 
@@ -30,8 +30,9 @@ CREATE TABLE `mst_product` (
   `nouki` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `gaku` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `gakun` int(255) NOT NULL,
+  `zaiko` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +41,7 @@ CREATE TABLE `mst_product` (
 
 LOCK TABLES `mst_product` WRITE;
 /*!40000 ALTER TABLE `mst_product` DISABLE KEYS */;
-INSERT INTO `mst_product` VALUES (1,'きゃべつ',100,'','','',0),(2,'とまと',1000,'','','',0),(3,'ＰＭ演習',6500,'工大書籍','7月16日','プロジェクトマネジメント学科',3);
+INSERT INTO `mst_product` VALUES (1,'情報処理',100,'日経BP','','プロジェクトマネジメント学科',3,'あり'),(2,'PM概論',1000,'岩波書店','','プロジェクトマネジメント学科',3,'あり'),(3,'PM演習',6500,'工大書籍','20210713','プロジェクトマネジメント学科',3,'なし'),(4,'ビジネスアナリシス知識体系ガイド',0,'','','',0,''),(5,'いいい',0,'','','',0,''),(6,'いいい',1000,'','','',0,''),(7,'いいい',1000,'日経BP','','',0,''),(8,'いいい',1000,'日経BP','20210713','',0,''),(9,'いいい',1000,'日経BP','20210713','',0,'なし'),(10,'いいい',1000,'日経BP','20210713','プロジェクトマネジメント学科',1,'なし');
 /*!40000 ALTER TABLE `mst_product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-13 16:53:57
+-- Dump completed on 2021-07-13 19:51:51
