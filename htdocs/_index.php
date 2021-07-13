@@ -73,7 +73,7 @@
 				//検索キーワード表示
 				if ($dept!==''||$grade!==''){
 					print $dept.'で';
-					print $grade.'が含まれる商品';
+					print $grade.'年で使う教科書';
 					print '<br />';
 				}
 
