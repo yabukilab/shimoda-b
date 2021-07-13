@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品修正</title>
+		<title>教科書削除</title>
 	</head>
 	<body>
 		<?php
@@ -26,11 +26,12 @@
 				$stmt->execute();
 
 				$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+
 				$dbh=null;
 
 				if($rec==false)
 				{
-					print'商品がコードが正しくありません。';
+					print'教科書がコードが正しくありません。';
 					print'<a href="index.php">戻る</a>';
 					print '<br />';
 					exit();
@@ -38,12 +39,6 @@
 
 				$_SESSION['code'] = "$pro_code";
 
-				$pro_name = $rec['name'];
-				$pro_price = $rec['price'];
-				$pro_syuppan = $rec['syuppan'];
-				$pro_nouki = $rec['nouki'];
-				$pro_gaku = $rec['gaku'];
-				$pro_gakun = $rec['gakun'];
 			}
 			catch(Exception $e)
 			{
@@ -52,25 +47,27 @@
 			}
 		?>
 
-		商品修正<br />
+		教科書削除<br />
 		<br />
 		商品コード<br />
-		<?php print $pro_code; ?><br />
-
-		<form method="post" action="edit_check.php">
+		<?php print h($rec['code']); ?><br />
 		商品名<br />
-		<input type="text" name="name" style="width:200px" value="<?php print $pro_name; ?>"><br />
+		<?php print h($rec['name']); ?><br />
 		価格<br />
-		<input type="text" name="price" style="width:50px" value="<?php print $pro_price; ?>">円<br />
+		<?php print h($rec['price']); ?><br />
 		出版社<br />
-		<input type="text" name="syuppan" style="width:200px" value="<?php print $pro_syuppan; ?>"><br />
+		<?php print h($rec['syuppan']); ?><br />
 		納期<br />
-		<input type="text" name="nouki" style="width:200px" value="<?php print $pro_nouki; ?>"><br />
-		学科<br />
-		<input type="text" name="gaku" style="width:200px" value="<?php print $pro_gaku; ?>"><br />
-		学年<br />
-		<input type="text" name="gakun" style="width:200px" value="<?php print $pro_gakun; ?>"><br />
-		<br/>
+		<?php print h($rec['nouki']); ?><br />
+		学科:<br />
+		<?php print h($rec['gaku']); ?><br />
+		学年:<br />
+		<?php print h($rec['gakun']); ?><br />
+		<br />
+		この商品を削除してよろしいですか？<br />
+		<br />
+
+		<form method="post" action="delete_done.php">
 		<input type="button" onclick="history.back()" value="戻る">
 		<input type="submit" value="ＯＫ">
 		</form>

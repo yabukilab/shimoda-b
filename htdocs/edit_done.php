@@ -31,6 +31,34 @@
 				print'価格が受信できません。';
 				exit();
 			}
+			if (isset($_SESSION['syuppan'])) {
+				$pro_syuppan=$_SESSION['syuppan'];
+			}
+			else{
+				print'出版社が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['nouki'])) {
+				$pro_nouki=$_SESSION['nouki'];
+			}
+			else{
+				print'納期が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['gaku'])) {
+				$pro_gaku=$_SESSION['gaku'];
+			}
+			else{
+				print'学科が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['grade'])) {
+				$pro_gakun=$_SESSION['grade'];
+			}
+			else{
+				print'学年が受信できません。';
+				exit();
+			}
 			session_unset();// セッション変数をすべて削除
 			session_destroy();// セッションIDおよびデータを破棄
 
@@ -40,16 +68,20 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-				$sql='UPDATE mst_product SET name=:name,price=:price WHERE code=:code';
+				$sql='UPDATE mst_product SET name=:name,price=:price,syuppan=:syuppan,nouki=:nouki,gaku=:gaku,gakun=:gakun WHERE code=:code';
 				$prepare=$db->prepare($sql);
 				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
 				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
 				$prepare->bindValue(':code', $pro_code, PDO::PARAM_INT);
+				$prepare->bindValue(':syuppan', $pro_syuppan, PDO::PARAM_STR);
+				$prepare->bindValue(':nouki', $pro_nouki, PDO::PARAM_STR);
+				$prepare->bindValue(':gaku', $pro_gaku, PDO::PARAM_STR);
+				$prepare->bindValue(':gakun', $pro_gakun, PDO::PARAM_INT);
 				$prepare->execute();
 
 				$db=null;
 
-				print '修正しました。<br />';
+				print '教科書が修正されました。<br />';
 
 			}
 			catch(Exception$e)

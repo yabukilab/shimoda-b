@@ -8,12 +8,57 @@
 		<?php
 			require_once '_database_conf.php';
 			require_once '_h.php';
-			require_once '_common.php';
+			require_once '_common.php';	
+		
 
-			//ここでデータベースの呼び出し
-			
+			$db = new PDO($dsn, $dbUser, $dbPass);
+			$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+			$sql='SELECT * FROM mst_product';
+			$prepare=$db->prepare($sql);
+			$prepare->execute();
+
+			$db=null;
+
+			print '<h1>発送状況確認画面</h1>';
+
+			print '<form method="post" action="">';
+			print '<input type="text" name="user_id" style="width:60px">';
+			print '<input type="submit" value="検索">';
+			print '</form>';
+
+			if (isset($_POST['user_id'])){
+				$user_id=$_POST['user_id'];
+			}
+			else{
+				$user_id='';
+			}
+
+			if ($user_id!==''){
+				print '学籍番号';
+				print $user_id.'の発送状況';
+				print '<br />';
+			}
+
+			/*while(true)
+				{
+					$rec=$prepare->fetch(PDO::FETCH_ASSOC);
+					if($rec==false)
+					{
+						break;
+					}
+					//検索処理
+					if (strpos($rec['userid'],$user_id)!==false){
+						 $hassou=$rec['hassou'];
+						 $haitatsu=$rec['haitatsu'];
+					}
+				}
+
+				*/
+
 			?>
-			<h1>発送状況確認画面</h1>
+		
 
 			
 
@@ -22,14 +67,12 @@
 			発送済み
 			</span>
 			<span>
-			<?php
-			//	ここでデータベースの発送状況を呼び出し
 
-			//例
+			<?php
 			$hassou = 1;
 
 
-			if($hassou ==''){
+			if($hassou =='0'){
 			print'<font color="red">--------------→</font>';
 			}
 			if($hassou =='1'){
@@ -48,7 +91,7 @@
 			$haitatsu = 0;
 
 
-			if($haitatsu ==''){
+			if($haitatsu =='0'){
 			print'<font color="red">--------------→</font>';
 			}
 			if($haitatsu =='1'){
