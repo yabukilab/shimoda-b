@@ -39,7 +39,7 @@
 				exit();
 			}
 			if (isset($_SESSION['zaiko'])) {
-				$pro_nouki=$_SESSION['zaiko'];
+				$pro_zaiko=$_SESSION['zaiko'];
 			}
 			else{
 				print'在庫が受信できません。';
@@ -68,7 +68,7 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-				$sql='INSERT INTO mst_product(name,price,syuppan,nouki,zaiko,gaku,gakun) VALUES (:name, :price, :syuppan, :nouki,:zaiko, :gaku, :grade)';
+				$sql='INSERT INTO mst_product(name,price,syuppan,nouki,zaiko,gaku,gakun) VALUES (:name,:price,:syuppan,:nouki,:zaiko,:gaku,:gakun)';
 				$prepare=$db->prepare($sql);
 				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
 				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
@@ -76,7 +76,7 @@
 				$prepare->bindValue(':nouki', $pro_nouki, PDO::PARAM_STR);
 				$prepare->bindValue(':zaiko', $pro_zaiko, PDO::PARAM_STR);
 				$prepare->bindValue(':gaku', $pro_gaku, PDO::PARAM_STR);
-				$prepare->bindValue(':grade', $pro_gakun, PDO::PARAM_INT);
+				$prepare->bindValue(':gakun', $pro_gakun, PDO::PARAM_INT);
 				$prepare->execute();
 
 				$db=null;

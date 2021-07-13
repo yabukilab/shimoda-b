@@ -20,18 +20,30 @@
 
 				print '注文情報<br /><br />';
 
+
+				print '学生番号 '.$user_id.' ';
+				print '<br />';
+				print '氏　　名 '.$user_name;
+				print '<br />';
+				print '<br />';
+				print '商品番号 書名 出版社 価格 在庫 納期';
+				print '<br />';
+
 				foreach ($_POST["check"] as $key => $value) {
 
 					$sql='SELECT * FROM mst_product WHERE code = :code';
 					$prepare=$db->prepare($sql);
 					$prepare->bindValue(':code', $value, PDO::PARAM_INT);
 					$prepare->execute();
-
+				
 					$rec=$prepare->fetch(PDO::FETCH_ASSOC);
-					print h($rec['code']).' ';
-					print h($rec['name']).' ';
-					print h($rec['price']).'円';
-					print '<br />';					
+					print $rec['code'].' ';
+					print $rec['name'].' ';
+					print $rec['syuppan'].' ';
+					print $rec['price'].'円'.' ';
+					print $rec['zaiko'].' ';
+					print $rec['nouki'].' ';
+					print '<br />';				
 
 				}
 

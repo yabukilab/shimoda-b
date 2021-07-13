@@ -27,13 +27,9 @@
 				$db=null;
 
 				print '教科書選択';
-
-				print '<br />';
 				print '<br />';
 				print '注文する教科書にチェックしてください';
 				print '<br />';
-				print '<br />';
-
 				print '<form method="post" action="order.php">';
 
 				//検索キーワード空チェック
@@ -49,7 +45,6 @@
 				else{
 					$user_grade='';
 				}
-				print '<br />';
 
 				//検索キーワード表示
 				if ($user_dept!==''&&$user_grade!==''){
@@ -57,6 +52,10 @@
 					print $user_grade.'年が含まれる商品';
 					print '<br />';
 				}
+	
+				print '<br />';
+				print '商品番号 書名 出版社 価格 在庫 納期';
+				print '<br />';
 
 				while(true)
 				{
@@ -69,8 +68,10 @@
 					if ((($user_dept==='')||(strpos($rec['gaku'],$user_dept)!==false))&&(($user_grade==='')||(strpos($rec['gakun'],$user_grade)!==false))){
 						print '<input type="checkbox" name="check[]" value="'.h($rec['code']). '">';
 						print $rec['code'].' ';
-						print $rec['name'].'  ';
-						print $rec['price'].' 円';
+						print $rec['name'].' ';
+						print $rec['syuppan'].' ';
+						print $rec['price'].'円'.' ';
+						print $rec['zaiko'].' ';
 						print $rec['nouki'].' ';
 						print '<br />';
 
@@ -102,6 +103,7 @@
 				print '<input type="text" name="student_name" style="width:100px">';
 
 				print '<br />';
+				print '<input type="button" onclick="history.back()" value="戻る">';
 				print '<input type="submit" formaction="order.php" value="決定">';
 				print '</form>';
 

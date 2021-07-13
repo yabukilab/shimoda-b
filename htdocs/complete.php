@@ -8,7 +8,8 @@
 		<?php
 
 			print '教科書を注文しました';
-
+			print '<br />';
 		?>
+		<a href="index.php">戻る</a>
 	</body>
 </html>
