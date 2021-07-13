@@ -5,7 +5,6 @@
 		<title>トップページ</title>
 	</head>
 	<body>
-		<a href="_index.php">管理者画面へ</a><br />
 		<?php
 			require_once '_database_conf.php';
 			require_once '_h.php';
@@ -34,6 +33,7 @@
 			//print '<button href="circumstances.php">発送状況確認画面へ</button><br />';
 
 		?>
-		<a href="circumstances.php">発送状況確認画面へ</a>
+//		<a href="circumstances.php">発送状況確認画面へ</a>
+		<a href="_index.php">管理者画面へ</a><br />
 	</body>
 </html>
