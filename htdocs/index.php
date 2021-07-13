@@ -33,7 +33,9 @@
 			//print '<button href="circumstances.php">発送状況確認画面へ</button><br />';
 
 		?>
-//		<a href="circumstances.php">発送状況確認画面へ</a>
+<!--
+		<a href="circumstances.php">発送状況確認画面へ</a>
+-->
 		<a href="_index.php">管理者画面へ</a><br />
 	</body>
 </html>
