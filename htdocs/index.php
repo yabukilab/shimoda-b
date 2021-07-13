@@ -31,9 +31,9 @@
 			print'<br/>';
 			print'</form>';
 
-			//print '<button href="circumstances.php">発送状況確認画面へ</button><br />';
+		
+			
 
 		?>
-		<a href="circumstances.php">発送状況確認画面へ</a>
 	</body>
 </html>
