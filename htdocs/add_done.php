@@ -24,29 +24,36 @@
 				print'価格が受信できません。';
 				exit();
 			}
-			if (isset($_SESSION['shupan'])) {
-				$pro_shupan=$_SESSION['shupan'];
+			if (isset($_SESSION['syuppan'])) {
+				$pro_syuppan=$_SESSION['syuppan'];
 			}
 			else{
 				print'出版社が受信できません。';
 				exit();
 			}
-            if (isset($_SESSION['noukinashi'])) {
-				$pro_noukinashi=$_SESSION['noukinashi'];
+			if (isset($_SESSION['nouki'])) {
+				$pro_nouki=$_SESSION['nouki'];
 			}
 			else{
 				print'納期が受信できません。';
 				exit();
 			}
-			if (isset($_SESSION['dept'])) {
-				$pro_gaka=$_SESSION['dept'];
+			if (isset($_SESSION['zaiko'])) {
+				$pro_nouki=$_SESSION['zaiko'];
+			}
+			else{
+				print'在庫が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['gaku'])) {
+				$pro_gaku=$_SESSION['gaku'];
 			}
 			else{
 				print'学科が受信できません。';
 				exit();
 			}
 			if (isset($_SESSION['grade'])) {
-				$pro_gakunen=$_SESSION['grade'];
+				$pro_gakun=$_SESSION['grade'];
 			}
 			else{
 				print'学年が受信できません。';
@@ -61,24 +68,27 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-				$sql='INSERT INTO mst_product(name,price,shupan,noukinashi,gaka,gakunen) VALUES (:name, :price,:shupan,:noukinashi,:dept,:grade)';
+				$sql='INSERT INTO mst_product(name,price,syuppan,nouki,zaiko,gaku,gakun) VALUES (:name, :price, :syuppan, :nouki,:zaiko, :gaku, :grade)';
 				$prepare=$db->prepare($sql);
 				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
 				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
-				$prepare->bindValue(':shupan', $pro_shupan, PDO::PARAM_INT);
-				$prepare->bindValue(':noukinashi', $pro_noukinashi, PDO::PARAM_INT);
-				$prepare->bindValue(':dept', $pro_gaka, PDO::PARAM_INT);
-				$prepare->bindValue(':grade', $pro_gakunen, PDO::PARAM_INT);
+				$prepare->bindValue(':syuppan', $pro_syuppan, PDO::PARAM_STR);
+				$prepare->bindValue(':nouki', $pro_nouki, PDO::PARAM_STR);
+				$prepare->bindValue(':zaiko', $pro_zaiko, PDO::PARAM_STR);
+				$prepare->bindValue(':gaku', $pro_gaku, PDO::PARAM_STR);
+				$prepare->bindValue(':grade', $pro_gakun, PDO::PARAM_INT);
 				$prepare->execute();
 
 				$db=null;
 
-				print h($pro_name).'<br /> ';
-				print h($pro_price);
-				print h($pro_shupan);
-				print h($pro_noukinashi);
-				print h($pro_gaka);
-				print h($pro_gakunen);
+				print h($pro_name).' ';
+				print'<br/>';
+				print h($pro_price).' ';
+				print h($pro_syuppan).' ';
+				print h($pro_nouki).' ';
+				print h($pro_zaiko).' ';
+				print h($pro_gaku).' ';
+				print h($pro_gakun).' ';
 				print 'を追加しました。<br />';
 
 			}

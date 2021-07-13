@@ -36,7 +36,49 @@
 
 				print '<form method="post" action="order.php">';
 
+				//検索キーワード空チェック
+				if (isset($_POST['dept'])){
+					$user_dept=$_POST['dept'];
+				}
+				else{
+					$user_dept='';
+				}
+				if (isset($_POST['grade'])){
+					$user_grade=$_POST['grade'];
+				}
+				else{
+					$user_grade='';
+				}
+				print '<br />';
+
+				//検索キーワード表示
+				if ($user_dept!==''&&$user_grade!==''){
+					print $user_dept.'で';
+					print $user_grade.'年が含まれる商品';
+					print '<br />';
+				}
+
 				while(true)
+				{
+					$rec=$prepare->fetch(PDO::FETCH_ASSOC);
+					if($rec==false)
+					{
+						break;
+					}
+					//検索処理
+					if ((($user_dept==='')||(strpos($rec['gaku'],$user_dept)!==false))&&(($user_grade==='')||(strpos($rec['gakun'],$user_grade)!==false))){
+						print '<input type="checkbox" name="check[]" value="'.h($rec['code']). '">';
+						print $rec['code'].' ';
+						print $rec['name'].'  ';
+						print $rec['price'].' 円';
+						print $rec['nouki'].' ';
+						print '<br />';
+
+					}
+				}
+//検索処理（おわり）
+
+				/*while(true)
 				{
 					$rec=$prepare->fetch(PDO::FETCH_ASSOC);
 					if($rec==false)
@@ -49,6 +91,7 @@
 					print h($rec['price']);
 					print '<br />';
 				}
+				*/
 
 				print '<br />';
 				print '学生番号';
