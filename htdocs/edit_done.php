@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DB登録</title>
+	</head>
+	<body>
+		<?php
+			require_once '_database_conf.php';
+			require_once '_h.php';
+
+			session_start();
+			if (isset($_SESSION['code'])) {
+				$pro_code=$_SESSION['code'];
+			}
+			else{
+				print'商品コードが受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['name'])) {
+				$pro_name=$_SESSION['name'];
+			}
+			else{
+				print'名前が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['price'])) {
+				$pro_price=$_SESSION['price'];
+			}
+			else{
+				print'価格が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['syuppan'])) {
+				$pro_syuppan=$_SESSION['syuppan'];
+			}
+			else{
+				print'出版社が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['nouki'])) {
+				$pro_nouki=$_SESSION['nouki'];
+			}
+			else{
+				print'納期が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['gaku'])) {
+				$pro_gaku=$_SESSION['gaku'];
+			}
+			else{
+				print'学科が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['grade'])) {
+				$pro_gakun=$_SESSION['grade'];
+			}
+			else{
+				print'学年が受信できません。';
+				exit();
+			}
+			session_unset();// セッション変数をすべて削除
+			session_destroy();// セッションIDおよびデータを破棄
+
+			try
+			{
+				$db = new PDO($dsn, $dbUser, $dbPass);
+				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+				$sql='UPDATE mst_product SET name=:name,price=:price,syuppan=:syuppan,nouki=:nouki,gaku=:gaku,gakun=:gakun WHERE code=:code';
+				$prepare=$db->prepare($sql);
+				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
+				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
+				$prepare->bindValue(':code', $pro_code, PDO::PARAM_INT);
+				$prepare->bindValue(':syuppan', $pro_syuppan, PDO::PARAM_STR);
+				$prepare->bindValue(':nouki', $pro_nouki, PDO::PARAM_STR);
+				$prepare->bindValue(':gaku', $pro_gaku, PDO::PARAM_STR);
+				$prepare->bindValue(':gakun', $pro_gakun, PDO::PARAM_INT);
+				$prepare->execute();
+
+				$db=null;
+
+				print '教科書が修正されました。<br />';
+
+			}
+			catch(Exception$e)
+			{
+				echo 'エラーが発生しました。内容: ' . h($e->getMessage());
+	 			exit();
+			}
+		?>
+		<a href="index.php">戻る</a>
+	</body>
+</html>
