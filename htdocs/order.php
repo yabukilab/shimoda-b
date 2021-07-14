@@ -12,15 +12,24 @@
 			$user_id=$_POST['student_id'];
 			$user_name=$_POST['student_name'];
 
+		//エラー処理追加
+		if($user_id=='' || $user_name=='' || isset($_POST["check"]) != true){
+			print '必要な情報が入力されていません。';
+			print '<br />';
+			print '教科書のチェック、学生番号、氏名を入力してください。';
+			print '<br />';
+			print '<input type="button" onclick="history.back()" value="戻る">';				
+		}
+		else{
 			try
 			{
 				$db = new PDO($dsn, $dbUser, $dbPass);
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-				print '注文情報<br /><br />';
-
-
+				print '注文情報';
+				print '<br />';
+				print '<br />';
 				print '学生番号 '.$user_id.' ';
 				print '<br />';
 				print '氏　　名 '.$user_name;
@@ -59,6 +68,7 @@
 				echo 'エラーが発生しました。内容: ' . h($e->getMessage());
 	 			exit();
 			}
+		}
 		?>
 	</body>
 </html>
