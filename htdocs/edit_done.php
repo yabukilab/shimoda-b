@@ -75,7 +75,7 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-				$sql='UPDATE mst_product SET name=:name,price=:price,syuppan=:syuppan,nouki=:nouki,zaiko=zaiko,gaku=:gaku,gakun=:gakun WHERE code=:code';
+				$sql='UPDATE mst_product SET name=:name,price=:price,syuppan=:syuppan,nouki=:nouki,zaiko=:zaiko,gaku=:gaku,gakun=:gakun WHERE code=:code';
 				$prepare=$db->prepare($sql);
 				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
 				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
