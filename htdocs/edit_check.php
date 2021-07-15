@@ -49,16 +49,16 @@
 				print  h($pro_syuppan);
 				print '<br />';
 			}
-			if($pro_nouki=='')
-			{
-				print '納期が入力されていません。<br />';
-			}
-			else
-			{
-				print '納期:';
-				print  h($pro_nouki);
-				print '<br />';
-			}
+//			if($pro_nouki=='')
+//			{
+//				print '納期が入力されていません。<br />';
+//			}
+//			else
+//			{
+//				print '納期:';
+//				print  h($pro_nouki);
+//				print '<br />';
+//			}
 			if($pro_zaiko=='')
 			{
 				print '在庫が入力されていません。<br />';
@@ -91,7 +91,8 @@
 				print '<br />';
 			}
 
-			if($pro_name=='' || $pro_price==''||$pro_syuppan==''||$pro_nouki==''||$pro_zaiko==''||$pro_gaku==''||$pro_gakun=='')
+//			if($pro_name=='' || $pro_price==''||$pro_syuppan==''||$pro_nouki==''||$pro_zaiko==''||$pro_gaku==''||$pro_gakun=='')
+			if($pro_name=='' || $pro_price==''||$pro_syuppan==''||$pro_zaiko==''||$pro_gaku==''||$pro_gakun=='')			
 			{
 				print '<form>';
 				print '<input type="button" onclick="history.back()" value="戻る">';
