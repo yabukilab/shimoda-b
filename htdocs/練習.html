@@ -2,83 +2,59 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="個人店test.css" type="tsxt/css">
-    <title>お勧め個人点</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        header {
-            text-align: center;
-            background-color: #f2f2f2;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        section {
-            margin-bottom: 20px;
-        }
-
-        .restaurant {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #f2f2f2;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-    </style>
+    <link rel="stylesheet" href="個人店test.css" type="text/css">
+    <title>お勧めの個人店</title>
 </head>
 <body>
 
     <header>
-        <h1>お勧め個人店</h1>
+        <h1>お勧めの個人店</h1>
     </header>
-    <h1>　</h1>
 
+    
+    
     <!-- ホームページへのリンク -->
     <a href="https://example.com" target="_blank">ホームページを訪れる</a>
-    <h1>　</h1>
-   
-     <!-- 他のサイトへのリンク -->
-     <p><a href="https://www.example.com" target="_blank">他のサイトを訪れる</a></p>
-      <!-- 他のサイトへのリンク -->
-    <p><a href="https://www.example.com" target="_blank">他のサイトを訪れる</a></p>
+
+   <!-- リンクを横一列に表示するコンテナ -->
+   <div class="links-container">
+        <!-- 他のサイトへのリンク -->
+        <p><a href="https://www.example.com" target="_blank" class="link">他のサイトを訪れる</a></p>
+    
+        <!-- 他のサイトへのリンク -->
+        <p><a href="https://www.example.com" target="_blank" class="link">他のサイトを訪れる</a></p>
+    </div>
+
     <section class="restaurant" id="restaurant1">
-        <img src="jmate.jpg" class="fade" alt="jamte画像">
-        <h2>元気食堂</h2>
-        <p>住所: 〇〇市△△町1-2-3</p>
+        <img src="images/jmate.jpg" alt="jamte画像">
+        場所は<a href="https://www.google.co.jp/maps/place/%E9%85%92%E5%87%A6%E3%81%8D%E3%81%BF/@35.684176,140.0215791,17z/data=!3m1!4b1!4m6!3m5!1s0x6022802eb4159253:0x89b0870356e333ec!8m2!3d35.684176!4d140.024154!16s%2Fg%2F1tkjl9s_?entry=ttu">こちら</a>
+        <h1>酒処きみ</h1>
+        <p>住所:新習志野市津田沼 3-1-6</p>
         <p>営業時間: 11:00 - 20:00</p>
         <p>定休日: 火曜日</p>
         <p>価格帯: 500円〜1000円</p>
-        <p>特徴: ヘルシーなランチが豊富</p>
     </section>
+
     <div class="slideshow-container">
-        <h1>　</h1>
-        <!--　画像を追加　-->
-        <img src="寿司.jpg"  alt="寿司画像">
-        <img src="food.Jpg" class="fade" alt="フード画像">
+        <header>
+            <h2>
+                <img src="お店の写真.jpg" alt="画像">
+            </h2>
+        </header>
+    </div>
 
     <section class="restaurant" id="restaurant2">
-        <h2></h2>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p>特徴</p>
+        <h2>
+            <p>特徴:
+            </p>
+        </h2>    
+
     </section>
+
     <div class="slideshow-container">
-        <!--　画像を追加　-->
-        <img src="food.Jpg" class="fade" alt="フード画像">
+        <!-- 画像を追加 -->
+        <img src="images/food.jpg" alt="フード画像">
+    </div>
 
     <!-- 他のお店の情報も同様に追加 -->
 
