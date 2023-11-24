@@ -1,0 +1,39 @@
+h1{
+    font-size:30px;
+    background-color:#e7ebe3;
+    color:#000000;
+    padding:8px 14px;
+    }
+P{
+    font-size: 600;
+    
+}
+ul{
+width:50%;
+margin:auto;
+border:4px solid #F3F3F3;
+padding:14px 14px 14px 32px;
+}
+
+h1{
+    font-size:30px;
+    background-color: #e7ebe3;
+    color: #000000
+    padding 8px 14px;
+}
+ul{
+    width:50%;
+    margin:auto;
+    border:4px solid#F3F3F3;
+    padding:14px 14px 14px 32px;
+}
+
+ /* リンクを横一列に表示するためのスタイル */
+ .links-container {
+    display: flex;
+}
+
+/* 各リンクのスタイル */
+.link {
+    margin-right: 10px;
+}
