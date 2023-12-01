@@ -2,99 +2,57 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お勧めのチェーン店</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        header {
-            text-align: center;
-            background-color: #f2f2f2;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        section {
-            margin-bottom: 20px;
-        }
-
-        .restaurant {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #f2f2f2;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-    </style>
+    <link rel="stylesheet" href="個人店test.css" type="text/css">
+    <title>お勧めの個人店</title>
 </head>
 <body>
 
     <header>
-        <h1>お勧めチェーン店</h1>
+        <h1>お勧めの個人店</h1>
     </header>
-    <h1>　</h1>
 
-    <!-- ホームページへのリンク -->
-    <a href="https://example.com" target="_blank">ホームページを訪れる</a>
-    <h1>　</h1>
-   
-     <!-- 他のサイトへのリンク -->
-     <p><a href="https://www.example.com" target="_blank">他のサイトを訪れる</a></p>
-      <!-- 他のサイトへのリンク -->
-    <p><a href="https://www.example.com" target="_blank">他のサイトを訪れる</a></p>
+
+    <!-- リンクを横一列に表示するコンテナ -->
+    <div class="links-container">
+            <!-- ホームページへのリンク -->
+        <p><a href="https://example.com" class="btn-square">ホームページへ</a></p>
+        <!-- 他のサイトへのリンク -->
+        <p><a href="https://www.example.com" class="btn-square">チェーン店へ</a></p>
+
+        <!-- 他のサイトへのリンク -->
+        <p><a href="https://www.example.com" class="btn-square">居酒屋へ</a></p>
+    </div>
+
     <section class="restaurant" id="restaurant1">
-        <img src="jmate.jpg" class="fade" alt="jamte画像">
+        <img src="./店の写真/店.jpeg" alt="寿司画像"width="650" height="400">
+        場所は<a href="https://www.google.co.jp/maps/search/%E6%97%A5%E9%AB%98%E5%B1%8B+%E6%B4%A5%E7%94%B0%E6%B2%BC/@35.6879102,140.0167928,16z?entry=ttu">こちら</a>
         <h2>日高屋</h2>
         <p>住所: 習志野市津田沼1-1-1</p>
         <p>営業時間: 10:30 - 25:00</p>
         <p>定休日: なし</p>
         <p>価格帯: 390円〜860円</p>
-        <p>特徴: </p>
+
     </section>
+
     <div class="slideshow-container">
-        <h1>　</h1>
-        <!--　画像を追加　-->
-        <img src="jmate.jpg" class="fade" alt="jamte画像">
-        <img src="food.Jpg" class="fade" alt="フード画像">
+        <img src="./店の写真/定食.jpeg" alt="寿司画像"width="300" height="200">
+    </div>
 
     <section class="restaurant" id="restaurant2">
-        <h2>松屋</h2>
-        <p>住所: 習志野市津田沼1-10-41 津田沼10番街ビル1F</p>
-        <p>営業時間 :24時間営業</p>
-        <p>定休日: なし</p>
-        <p>価格帯: 400円～870円</p>
-        <p>特徴: </p>
+
+        <p>特徴: 日高屋は主にラーメンや定食を提供している。<br>
+            リーズナブルな価格で食事が提供されるのでシンプルでありながら満足感のある料理が特徴。<br>
+            メニューはラーメンや丼物、サイドメニューなどが豊富にそろっている。<br>
+            客層がサラリーマンや学生など、幅広い層の人々が訪れているので一人でも気軽に入りやすい。
+        <!-- その他のコンテンツ -->
     </section>
+    
     <div class="slideshow-container">
-        <!--　画像を追加　-->
-        <img src="food.Jpg" class="fade" alt="フード画像">
+        <!-- 画像を追加 -->
+        <img src="images/food.jpg" alt="フード画像">
+    </div>
 
     <!-- 他のお店の情報も同様に追加 -->
-    <section class="restaurant" id="restaurant1">
-        <img src="jmate.jpg" class="fade" alt="jamte画像">
-        <h2>天丼てんや</h2>
-        <p>住所: 習志野市津田沼1-10-34 津田沼12番街ビル1F</p>
-        <p>営業時間: 10:30 - 22:00</p>
-        <p>定休日: なし</p>
-        <p>価格帯: 560円〜920円</p>
-        <p>特徴: </p>
-    </section>
-    <div class="slideshow-container">
-        <h1>　</h1>
-        <!--　画像を追加　-->
-        <img src="jmate.jpg" class="fade" alt="jamte画像">
-        <img src="food.Jpg" class="fade" alt="フード画像">
 
     <footer>
         &copy; 2023 お手頃ご飯やさん紹介サイト
