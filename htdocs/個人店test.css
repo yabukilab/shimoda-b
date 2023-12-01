@@ -19,6 +19,7 @@ ul {
 /* リンクを横一列に表示するためのスタイル */
 .links-container {
     display: flex;
+
 }
 
 /* 各リンクのスタイル */
@@ -28,6 +29,8 @@ ul {
 }
 
 .btn-square {
+    height: 30px;
+    width: 120px;
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
@@ -37,6 +40,8 @@ ul {
     border-radius: 3px;
     margin-right: 50px;
     cursor: pointer;
+    text-align: center;
+    line-height: 30px;
 }
 
 .btn-square:active {
