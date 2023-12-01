@@ -37,3 +37,21 @@ ul{
 .link {
     margin-right: 10px;
 }
+.btn-square {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background: #0a0a0a;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #4a4f5a;
+    border-radius: 3px;
+    margin-right: 50px;
+    cursor: pointer;
+
+  }
+  .btn-square:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
