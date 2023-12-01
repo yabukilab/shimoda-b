@@ -2,83 +2,50 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お勧めの居酒屋</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        header {
-            text-align: center;
-            background-color: #f2f2f2;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        section {
-            margin-bottom: 20px;
-        }
-
-        .restaurant {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #f2f2f2;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-    </style>
+    <link rel="stylesheet" href="個人店test.css" type="text/css">
+    <title>お勧めの個人店</title>
 </head>
 <body>
 
     <header>
-        <h1>お勧め個人店</h1>
+        <h1>お勧めの個人店</h1>
     </header>
-    <h1>　</h1>
 
-    <!-- ホームページへのリンク -->
-    <a href="https://example.com" target="_blank">ホームページを訪れる</a>
-    <h1>　</h1>
-   
-     <!-- 他のサイトへのリンク -->
-     <p><a href="https://www.example.com" target="_blank">他のサイトを訪れる</a></p>
-      <!-- 他のサイトへのリンク -->
-    <p><a href="https://www.example.com" target="_blank">他のサイトを訪れる</a></p>
+
+    <!-- リンクを横一列に表示するコンテナ -->
+    <div class="links-container">
+            <!-- ホームページへのリンク -->
+        <p><a href="https://example.com" class="btn-square">ホームページへ</a></p>
+        <!-- 他のサイトへのリンク -->
+        <p><a href="https://www.example.com" class="btn-square">チェーン店へ</a></p>
+
+        <!-- 他のサイトへのリンク -->
+        <p><a href="https://www.example.com" class="btn-square">居酒屋へ</a></p>
+    </div>
+
     <section class="restaurant" id="restaurant1">
-        <img src="jmate.jpg" class="fade" alt="jamte画像">
-        <h2>大衆スタンド 神田屋 津田沼店</h2>
+        <img src="./店の写真/店.jpeg" alt="寿司画像"width="650" height="400">
+        場所は<a href="https://www.google.co.jp/maps/place/%E7%A5%9E%E7%94%B0%E5%B1%8B+%E6%B4%A5%E7%94%B0%E6%B2%BC%E5%BA%97/@35.6910251,140.0189933,17z/data=!3m1!4b1!4m6!3m5!1s0x6022812703b9ebc7:0xb6d8bbe14d4cde15!8m2!3d35.6910251!4d140.0215682!16s%2Fg%2F11t656d742?entry=ttu">こちら</a>
+        <h2>大衆スタンド 神田屋 津田沼店</h2> <!-- h1からh6の要素はトップレベルの見出しに使うため、ここではh2を使用 -->
         <p>住所: 千葉県習志野市津田沼1丁目2-16</p>
         <p>営業時間: 平日16:00 - 23:00 土 14:oo - 23:00 日祝 14:00-22:00 </p>
         <p>定休日: なし</p>
         <p>価格帯: 1,000円〜1,999円</p>
-        <p>特徴: 立ち飲み1100円が魅力</p>
-    </section>
+
+
     <div class="slideshow-container">
-        <h1>　</h1>
-        <!--　画像を追加　-->
-        <img src="jmate.jpg" class="fade" alt="jamte画像">
-        <img src="food.Jpg" class="fade" alt="フード画像">
+        <img src="./店の写真/定食.jpeg" alt="寿司画像"width="300" height="200">
+    </div>
 
     <section class="restaurant" id="restaurant2">
-        <h2></h2>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p>特徴</p>
+        <p>特徴: 立ち飲み1100円が魅力。注文時に点棒を10本もらい、点棒を払って商品を注文する。そのため自分だけの千ベロセットを作れる</p>
+        <!-- その他のコンテンツ -->
     </section>
+    
     <div class="slideshow-container">
-        <!--　画像を追加　-->
-        <img src="food.Jpg" class="fade" alt="フード画像">
+        <!-- 画像を追加 -->
+        <img src="images/food.jpg" alt="フード画像">
+    </div>
 
     <!-- 他のお店の情報も同様に追加 -->
 
