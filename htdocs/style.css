@@ -34,8 +34,9 @@ ul{
 }
 
 /* 各リンクのスタイル */
-.link {
+.link :hover{
     margin-right: 10px;
+    border: 2px solid #000000;
 }
 
 .btn-square {
