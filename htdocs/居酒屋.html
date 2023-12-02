@@ -1,51 +1,97 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="個人店test.css" type="text/css">
-    <title>お勧めの個人店</title>
+  <meta charset="UTF-8">
+  <title>居酒屋</title>
+  <style>
+   h1{
+            font-size:30px;
+            background-color: #e7ebe3;
+            color: #000000;
+            padding:8px 14px;
+        }
+        ul{
+            width:50%;
+            margin:auto;
+            border:4px solid#F3F3F3;
+            padding:14px 14px 14px 32px;
+        }
+    h2{ font-size:30px;
+            background-color: #e7ebe3;
+            color: #000000;
+            padding:8px 14px;
+        }
+        ul{
+            width:50%;
+            margin:auto;
+            border:4px solid#F3F3F3;
+            padding:14px 14px 14px 32px;
+          }
+        .links-container {
+        display: flex;
+        }      
+        .btn-square {
+        height: 30px;
+        width: 120px;
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        background: #0a0a0a;
+        color: #FFF;
+        border-bottom: solid 4px #4a4f5a;
+        border-radius: 3px;
+        margin-right: 50px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 30px;
+        }
+
+       .btn-square:active {
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+        border-bottom: none;
+       }
+  </style>
 </head>
+
 <body>
-
-    <header>
-        <h1>お勧めの個人店</h1>
-    </header>
-
-
-    <!-- リンクを横一列に表示するコンテナ -->
+  <header>
+    <h1>大衆スタンド 神田屋 津田沼店</h1>
     <div class="links-container">
-            <!-- ホームページへのリンク -->
+        <!-- ホームページへのリンク -->
         <p><a href="index.html" class="btn-square">ホームページへ</a></p>
         <!-- 他のサイトへのリンク -->
         <p><a href="個人店.html" class="btn-square">個人店へ</a></p>
         <!-- 他のサイトへのリンク -->
         <p><a href="チェーン店.html" class="btn-square">チェーン店へ</a></p>
     </div>
+    <p>あなたのお気に入りの安いセットを見つけよう</p>
+    <img src="居酒屋1.jpg" alt="居酒屋の写真" width="400" height="400">
+    場所は<a href="https://www.google.co.jp/maps/place/%E7%A5%9E%E7%94%B0%E5%B1%8B+%E6%B4%A5%E7%94%B0%E6%B2%BC%E5%BA%97/@35.6907186,140.020095,18.21z/data=!4m6!3m5!1s0x6022812703b9ebc7:0xb6d8bbe14d4cde15!8m2!3d35.6910251!4d140.0215682!16s%2Fg%2F11t656d742?hl=ja&entry=ttu">こちら</a>
+  </header>
 
-    <section class="restaurant" id="restaurant1">
-        <img src="居酒屋1.jpg" alt="寿司画像"width="650" height="400">
-        場所は<a href="https://www.google.co.jp/maps/place/%E7%A5%9E%E7%94%B0%E5%B1%8B+%E6%B4%A5%E7%94%B0%E6%B2%BC%E5%BA%97/@35.6910251,140.0189933,17z/data=!3m1!4b1!4m6!3m5!1s0x6022812703b9ebc7:0xb6d8bbe14d4cde15!8m2!3d35.6910251!4d140.0215682!16s%2Fg%2F11t656d742?entry=ttu">こちら</a>
-        <h2>大衆スタンド 神田屋 津田沼店</h2> <!-- h1からh6の要素はトップレベルの見出しに使うため、ここではh2を使用 -->
-        <p>住所: 千葉県習志野市津田沼1丁目2-16</p>
-        <p>営業時間: 平日16:00 - 23:00 土 14:oo - 23:00 日祝 14:00-22:00 </p>
-        <p>定休日: なし</p>
-        <p>価格帯: 1,000円〜1,999円</p>
+  <section id="introduction">
+    <p>ここでは、大衆スタンド神田屋のお勧めの安いセットを紹介します。<br>この神田屋では、立ち飲み1100円がお勧めです。この商品は、注文時に点棒を10本もらい、点棒を払って商品を注文します。そのため、自分だけの千ベロセットを作ることが出来ます。
+    </p>
+  </section>
 
-
-    <div class="slideshow-container">
-        <img src="2居酒屋.jpg" alt="寿司画像"width="300" height="200">
+  <section id="restaurants">
+    <div class="restaurant" id="kanndaya">
+      <h2>おすすめのセット　1100円</h2>
+      <img src="3居酒屋.jpg" alt="居酒屋の写真" width="300" height="350">
+      <img src="4居酒屋.jpg" alt="居酒屋の写真" width="300" height="350">
+      <p>1回目の注文では、点棒を1本ずつでパンチレモンサワーとポテトサラダ、点棒を2本で砂肝刺しを注文しました。<br>2回目の注文では、点棒を1本で砂肝串、点棒を2本で日本酒（熱燗）、点棒を3本でイカ刺しを注文しました。<br>合計で6品で1100円（税込み）になりました。</p>
     </div>
+    <div class="restaurant" id="menu">
+      <h2>他のメニュー</h2>
+      <img src="2居酒屋.jpg" alt="居酒屋の写真" width="450" height="350">
+      <p>他にも多くの種類の品があります。自分だけのセットを見つけてみてください。</p>
+    </div>
+  </section>
 
-    <section class="restaurant" id="restaurant2">
-        <p>特徴: 立ち飲み1100円が魅力。注文時に点棒を10本もらい、点棒を払って商品を注文する。そのため自分だけの千ベロセットを作れる</p>
-        <!-- その他のコンテンツ -->
-    </section>
-  
-    <!-- 他のお店の情報も同様に追加 -->
-
-    <footer>
-        &copy; 2023 お手頃ご飯やさん紹介サイト
-    </footer>
+  <footer>
+    <p>2023 安いご飯やさん紹介サイト</p>
+  </footer>
 
 </body>
 </html>
