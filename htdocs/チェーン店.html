@@ -1,56 +1,96 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="個人店test.css" type="text/css">
-    <title>お勧めの個人店</title>
+  <meta charset="UTF-8">
+  <title>チェーン店</title>
+  <style>
+   h1{
+            font-size:30px;
+            background-color: #e7ebe3;
+            color: #000000;
+            padding:8px 14px;
+        }
+        ul{
+            width:50%;
+            margin:auto;
+            border:4px solid#F3F3F3;
+            padding:14px 14px 14px 32px;
+        }
+    h2{ font-size:30px;
+            background-color: #e7ebe3;
+            color: #000000;
+            padding:8px 14px;
+        }
+        ul{
+            width:50%;
+            margin:auto;
+            border:4px solid#F3F3F3;
+            padding:14px 14px 14px 32px;
+          }    
+        .links-container {
+        display: flex;
+        }      
+        .btn-square {
+        height: 30px;
+        width: 120px;
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        background: #0a0a0a;
+        color: #FFF;
+        border-bottom: solid 4px #4a4f5a;
+        border-radius: 3px;
+        margin-right: 50px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 30px;
+        }
+
+       .btn-square:active {
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+        border-bottom: none;
+       }
+  </style>
 </head>
+
 <body>
-    
-    <header>
-        <h1>お勧めの個人店</h1>
-    </header>
-
-
-    <!-- リンクを横一列に表示するコンテナ -->
+  <header>
+    <h1>日高屋　津田沼駅南口店</h1>
     <div class="links-container">
-            <!-- ホームページへのリンク -->
-        <p><a href="index.html" class="btn-square">ホームページへ</a></p>
-        <!-- 他のサイトへのリンク -->
-        <p><a href="個人店.html" class="btn-square">個人店へ</a></p>
-        <!-- 他のサイトへのリンク -->
-        <p><a href="居酒屋.html" class="btn-square">居酒屋へ</a></p>
+      <!-- ホームページへのリンク -->
+      <p><a href="index.html" class="btn-square">ホームページへ</a></p>
+      <!-- 他のサイトへのリンク -->
+      <p><a href="個人店.html" class="btn-square">個人店へ</a></p>
+      <!-- 他のサイトへのリンク -->
+      <p><a href="居酒屋.html" class="btn-square">居酒屋へ</a></p>
     </div>
+    <p>あなたのお気に入りの安い商品を見つけよう</p>
+    <img src="日高屋1.jpg" alt="日高屋の写真" width="500" height="300">
+    場所は<a href="https://www.google.co.jp/maps/place/%E6%97%A5%E9%AB%98%E5%B1%8B+%E6%B4%A5%E7%94%B0%E6%B2%BC%E9%A7%85%E5%8D%97%E5%8F%A3%E5%BA%97/@35.6907819,140.0179652,17z/data=!3m1!4b1!4m6!3m5!1s0x60228020cafd967b:0xfa79f6965aff8e08!8m2!3d35.6907819!4d140.0205401!16s%2Fg%2F11f24wtx41?entry=ttu">こちら</a>
+  </header>
 
-    <section class="restaurant" id="restaurant1">
-        <img src="チェーン店1.jpg" alt="寿司画像"width="650" height="400">
-        場所は<a href="https://www.google.co.jp/maps/search/%E6%97%A5%E9%AB%98%E5%B1%8B+%E6%B4%A5%E7%94%B0%E6%B2%BC/@35.6879102,140.0167928,16z?entry=ttu">こちら</a>
-        <h2>日高屋</h2>
-        <p>住所: 習志野市津田沼1-1-1</p>
-        <p>営業時間: 10:30 - 25:00</p>
-        <p>定休日: なし</p>
-        <p>価格帯: 390円〜860円</p>
+  <section id="introduction">
+    <p>津田沼エリアの魅力的なチェーン店をご紹介！ここでは、日高屋のお勧めの安いメニューについて紹介します。<br>日高屋では、主にラーメンや定食を提供しています。とてもリーズナブルな価格で食事が提供され、シンプルでありながらも満足感があります。客層は、皿シーマンや学生など、幅広い層の人々が訪れているので一人でも気軽に入ることが出来ます。</p>
+  </section>
 
-    </section>
-
-    <div class="slideshow-container">
-        <img src="チェーン店2.jpg" alt="寿司画像"width="300" height="200">
+  <section id="restaurants">
+    <div class="restaurant" id="hidakaya-1">
+      <h2>おすすめ1　野菜たっぷりタンメン　520円</h2>
+      <img src="日高屋5.jpg" alt="日高屋の写真" width="300">
+      <p>お勧めは野菜たっぷりタンメン！<br>野菜たっぷりタンメンは、野菜をたくさん取ることが出来、野菜不足の人にもお勧めです。さらに、値段が安いにもかかわらず具だくさんなのでとても満足感があります。<br>カロリーは820kcal　値段は520円（税込み）</p>
     </div>
+    <div class="restaurant" id="hidakaya-2">
+      <h2>おすすめ2　中華そば　390円</h2>
+      <img src="2日高屋.jpg" alt="日高屋の写真" width="300">
+      <p>お勧めは中華そば！<br>中華そばは、なんといっても安いです。単品の値段が390円なのでとてもお得です。中華そばは、他の商品を一緒に頼んでも1000円ぐらいで食べることが出来ます。<br>カロリーは635kcal（スープを含む）　値段は390円（税込み）</p>
+    </div>
+  </section>
 
-    <section class="restaurant" id="restaurant2">
 
-        <p>特徴: 日高屋は主にラーメンや定食を提供している。<br>
-            リーズナブルな価格で食事が提供されるのでシンプルでありながら満足感のある料理が特徴。<br>
-            メニューはラーメンや丼物、サイドメニューなどが豊富にそろっている。<br>
-            客層がサラリーマンや学生など、幅広い層の人々が訪れているので一人でも気軽に入りやすい。
-        <!-- その他のコンテンツ -->
-    </section>
-
-    <!-- 他のお店の情報も同様に追加 -->
-
-    <footer>
-        &copy; 2023 お手頃ご飯やさん紹介サイト
-    </footer>
+  <footer>
+    <p>2023 安いご飯やさん紹介サイト</p>
+  </footer>
 
 </body>
 </html>
