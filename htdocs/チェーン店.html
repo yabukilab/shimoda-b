@@ -4,93 +4,68 @@
   <meta charset="UTF-8">
   <title>チェーン店</title>
   <style>
-   h1{
-            font-size:30px;
-            background-color: #e7ebe3;
-            color: #000000;
-            padding:8px 14px;
-        }
-        ul{
-            width:50%;
-            margin:auto;
-            border:4px solid#F3F3F3;
-            padding:14px 14px 14px 32px;
-        }
-    h2{ font-size:30px;
-            background-color: #e7ebe3;
-            color: #000000;
-            padding:8px 14px;
-        }
-        ul{
-            width:50%;
-            margin:auto;
-            border:4px solid#F3F3F3;
-            padding:14px 14px 14px 32px;
-          }    
-        .links-container {
-        display: flex;
-        }      
-        .btn-square {
-        height: 30px;
-        width: 120px;
-        display: inline-block;
-        padding: 10px 20px;
-        text-decoration: none;
-        background: #0a0a0a;
-        color: #FFF;
-        border-bottom: solid 4px #4a4f5a;
-        border-radius: 3px;
-        margin-right: 50px;
-        cursor: pointer;
-        text-align: center;
-        line-height: 30px;
-        }
+    .heading {
+    font-size: 30px;
+    background-color: #e7ebe3;
+    color: #000000;
+    padding: 8px 14px;
+    }       
+    .links-container {
+    display: flex;
+    }      
+    .btn-square {
+    height: 30px;
+    width: 120px;
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background: #0a0a0a;
+    color: #FFF;
+    border-bottom: solid 4px #4a4f5a;
+    border-radius: 3px;
+    margin-right: 50px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;     
+    }
 
-       .btn-square:active {
-        -webkit-transform: translateY(4px);
-        transform: translateY(4px);
-        border-bottom: none;
-       }
+    .btn-square:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    border-bottom: none;
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>日高屋　津田沼駅南口店</h1>
+    <h1 class="heading">日高屋　津田沼駅南口店</h1>
     <div class="links-container">
       <!-- ホームページへのリンク -->
-      <p><a href="index.html" class="btn-square">ホームページへ</a></p>
+      <a href="index.html" class="btn-square">ホームページへ</a>
       <!-- 他のサイトへのリンク -->
-      <p><a href="個人店.html" class="btn-square">個人店へ</a></p>
+      <a href="個人店.html" class="btn-square">個人店へ</a>
       <!-- 他のサイトへのリンク -->
-      <p><a href="居酒屋.html" class="btn-square">居酒屋へ</a></p>
+      <a href="居酒屋.html" class="btn-square">居酒屋へ</a>
     </div>
     <p>あなたのお気に入りの安い商品を見つけよう</p>
     <img src="日高屋1.jpg" alt="日高屋の写真" width="500" height="300">
     場所は<a href="https://www.google.co.jp/maps/place/%E6%97%A5%E9%AB%98%E5%B1%8B+%E6%B4%A5%E7%94%B0%E6%B2%BC%E9%A7%85%E5%8D%97%E5%8F%A3%E5%BA%97/@35.6907819,140.0179652,17z/data=!3m1!4b1!4m6!3m5!1s0x60228020cafd967b:0xfa79f6965aff8e08!8m2!3d35.6907819!4d140.0205401!16s%2Fg%2F11f24wtx41?entry=ttu">こちら</a>
-  </header>
-
-  <section id="introduction">
-    <p>津田沼エリアの魅力的なチェーン店をご紹介！ここでは、日高屋のお勧めの安いメニューについて紹介します。<br>日高屋では、主にラーメンや定食を提供しています。とてもリーズナブルな価格で食事が提供され、シンプルでありながらも満足感があります。客層は、皿シーマンや学生など、幅広い層の人々が訪れているので一人でも気軽に入ることが出来ます。</p>
-  </section>
+  </header> 
+  <p>津田沼エリアの魅力的なチェーン店をご紹介！ここでは、日高屋のお勧めの安いメニューについて紹介します。<br>日高屋では、主にラーメンや定食を提供しています。とてもリーズナブルな価格で食事が提供され、シンプルでありながらも満足感があります。客層は、皿シーマンや学生など、幅広い層の人々が訪れているので一人でも気軽に入ることが出来ます。</p>
 
   <section id="restaurants">
     <div class="restaurant" id="hidakaya-1">
-      <h2>おすすめ1　野菜たっぷりタンメン　520円</h2>
+      <h2 class="heading">おすすめ1　野菜たっぷりタンメン　520円</h2>
       <img src="日高屋5.jpg" alt="日高屋の写真" width="300">
       <p>お勧めは野菜たっぷりタンメン！<br>野菜たっぷりタンメンは、野菜をたくさん取ることが出来、野菜不足の人にもお勧めです。さらに、値段が安いにもかかわらず具だくさんなのでとても満足感があります。<br>カロリーは820kcal　値段は520円（税込み）</p>
     </div>
     <div class="restaurant" id="hidakaya-2">
-      <h2>おすすめ2　中華そば　390円</h2>
+      <h2 class="heading">おすすめ2　中華そば　390円</h2>
       <img src="2日高屋.jpg" alt="日高屋の写真" width="300">
       <p>お勧めは中華そば！<br>中華そばは、なんといっても安いです。単品の値段が390円なのでとてもお得です。中華そばは、他の商品を一緒に頼んでも1000円ぐらいで食べることが出来ます。<br>カロリーは635kcal（スープを含む）　値段は390円（税込み）</p>
     </div>
   </section>
-
-
-  <footer>
-    <p>2023 安いご飯やさん紹介サイト</p>
-  </footer>
 
 </body>
 </html>
