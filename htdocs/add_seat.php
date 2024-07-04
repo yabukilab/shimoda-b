@@ -73,49 +73,31 @@
     <div id="seat-container"></div>
     
     <?php
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$dbname = "cafeteria";
+    
+    require 'db.php'; // データベース接続を読み込み
+    
+    header('Content-Type: application/json');
 
-// MySQLデータベースに接続
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// 接続確認
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// 座席状態の取得
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $sql = "SELECT id, in_use FROM status";
-    $result = $conn->query($sql);
-
-    $seats = array();
-    while ($row = $result->fetch_assoc()) {
-        $seats[] = $row;
-    }
-    echo json_encode($seats);
-}
-
-// 座席状態の更新
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $seat_id = intval($_POST['seat_id']);
-    $current_status = intval($_POST['in_use']);
-
-    // 座席状態の反転
-    $new_status = $current_status ? 0 : 1;
-
-    $sql = "UPDATE status SET in_use=$new_status WHERE id=$seat_id";
-    if ($conn->query($sql) === TRUE) {
-        echo "Seat updated successfully";
+    if (isset($data['position']) && isset($data['status'])) {
+        $position = (int) $data['position'];
+        $status = (int) $data['status'];
+    
+        $stmt = $pdo->prepare('UPDATE seat SET status = ? WHERE position = ?');
+        if ($stmt->execute([$status, $position])) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'データベース更新に失敗しました。']);
+        }
     } else {
-        echo "Error updating seat: " . $conn->error;
+        echo json_encode(['success' => false, 'message' => '無効なデータが送信されました。']);
     }
-}
+    
+    $stmt = $pdo->query('SELECT position, status FROM seat');
+    $seats = $stmt->fetchAll();
+    
+    echo json_encode($seats);
 
-$conn->close();
-?>
+    ?>
 
 </body>
 </html>

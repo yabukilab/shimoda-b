@@ -1,0 +1,21 @@
+<?php
+require 'db.php'; // データベース接続を読み込み
+
+header('Content-Type: application/json');
+
+$data = json_decode(file_get_contents('php://input'), true);
+
+if (isset($data['position']) && isset($data['status'])) {
+    $position = $data['position'];
+    $status = $data['status'];
+
+    $stmt = $pdo->prepare('UPDATE seat SET status = ? WHERE position = ?');
+    if ($stmt->execute([$status, $position])) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+} else {
+    echo json_encode(['success' => false]);
+}
+?>
