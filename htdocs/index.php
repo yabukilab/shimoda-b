@@ -7,13 +7,12 @@
     <body>
 
         <h2>本日のメニュー</h2>
-        <form method="POST">
-            <button type="submit" name="list">混雑状況確認</button>
-            <br><br>
+        <form action="disp_seat.php" method="post">
+        <button type="submit" name="seat">混雑状況確認</button>
+        <br><br>
 
         <?php
 
-       
         require 'db.php';
         
         // SQLクエリを実行して結果を取得
@@ -33,14 +32,8 @@
         }
         echo "</table>";
 
-
-        if (isset($_POST['list'])) {
-            header("Location:disp_seat.php");
-        }
-
         ?>
         
-
     </body>
 <html>
 
