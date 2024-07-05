@@ -42,12 +42,9 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php endforeach; ?>
          </div>
+         
+         <a href="index.php" class="back-button">TOPへ</a>
        
-       <?php
-        if (isset($_POST['top'])) {
-            header("Location:index.php");
-        }
-        ?>
     </body>
 </html>
 
