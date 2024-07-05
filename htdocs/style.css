@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* 背景画像のパス */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #333;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* 背景を半透明にする */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    border-radius: 8px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #444;
+  }
+  
+  .result {
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .result:last-child {
+    border-bottom: none;
+  }
+  
+  .result span {
+    display: block;
+    font-size: 1.2em;
+  }
+  
+  .result .id {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .result .name {
+    font-size: 1em;
+    color: #777;
+  }
+  
