@@ -32,8 +32,8 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <body>
         <h2>座席の利用状況</h2>
 
-        <form method="POST">
-            <button type="submit" name="top">TOPへ</button>
+        <form action="index.php" method="post">
+        <button type="submit" name="top">TOPへ</button>
 
         <div id="seats">
         <?php foreach ($seats as $seat): ?>
@@ -41,10 +41,7 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php echo $seat['position']; ?>
             </div>
         <?php endforeach; ?>
-         </div>
-         
-         <a href="index.php" class="back-button">TOPへ</a>
-       
+         </div>       
     </body>
 </html>
 
