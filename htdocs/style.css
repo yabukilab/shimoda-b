@@ -24,28 +24,29 @@ body {
     color: #444;
   }
   
-  .result {
-    margin: 20px 0;
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .menu-header, .menu-row {
+    display: flex;
+  }
+  
+  .menu-cell {
+    flex: 1;
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
   
-  .result:last-child {
-    border-bottom: none;
-  }
-  
-  .result span {
-    display: block;
-    font-size: 1.2em;
-  }
-  
-  .result .id {
+  .menu-header .menu-cell {
     font-weight: bold;
-    color: #555;
+    background-color: #f4f4f4;
   }
   
-  .result .name {
-    font-size: 1em;
-    color: #777;
+  .menu-cell img {
+    max-width: 100px;
+    height: auto;
+    display: block;
   }
-  
