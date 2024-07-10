@@ -22,19 +22,7 @@
         // SQLクエリを実行して結果を取得
         $stmt = $pdo->query('SELECT sort, name, price, code, image FROM menu');
         
-        // 結果を表示
-        echo "<table border='1'>";
-        echo "<tr><th>メニュー区分</th><th>メニュー名</th><th>価格</th><th>メニュー番号</th><th>画像</th></tr>";
-        while ($row = $stmt->fetch()) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($row['sort']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['price']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['code']) . "</td>";
-            echo "<td><img src='data:image/jpeg;base64," . base64_encode($row['image']) . "' alt='メニュー画像' /></td>";
-            echo "</tr>";
-        }
-        echo "</table>";
+        
         
          // 結果を表示
     echo "<div class='menu-container'>";
