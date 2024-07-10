@@ -1,9 +1,9 @@
 <?php
-require 'db.php'; // データベース接続を読み込み
+require 'db.php'; 
 
-$stmt = $pdo->query('SELECT position, status FROM seat');
+$stmt = $pdo->prepare('SELECT position, status FROM seat ORDER BY position ASC');
+$stmt->execute();
 $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
@@ -11,37 +11,21 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	<head>
 		<meta charset="UTF-8">
 		<title>混雑状況確認</title>
-    <style>
-        .seat {
-            width: 50px;
-            height: 50px;
-            margin: 5px;
-            display: inline-block;
-            background-color: red;
-            text-align: center;
-            vertical-align: middle;
-            line-height: 50px;
-            color: white;
-            font-weight: bold;
-        }
-        .occupied {
-            background-color: green;
-        }
-    </style>
+        <link rel="stylesheet" href="seat_styles.css">
 	</head>
     <body>
-        <h2>座席の利用状況</h2>
+        <h1>座席利用状況</h1>
 
         <form action="index.php" method="post">
         <button type="submit" name="top">TOPへ</button>
 
-        <div id="seats">
+        <div class="seat-container">
         <?php foreach ($seats as $seat): ?>
-            <div class="seat <?php echo $seat['status'] == 1 ? 'occupied' : ''; ?>">
-                <?php echo $seat['position']; ?>
+            <div class="seat <?= $seat['status'] ? 'occupied' : '' ?>">
+                <?= $seat['position'] ?>
             </div>
         <?php endforeach; ?>
-         </div>       
+        </div>    
     </body>
 </html>
 
