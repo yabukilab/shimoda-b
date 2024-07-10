@@ -68,12 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     seatLayout.forEach(seatNumber => {
-        const seat = document.createElement('div');
-        seat.classList.add('seat');
-        seat.textContent = seatNumber || '';
-        if (seatNumber) seat.dataset.position = seatNumber;
-        seat.addEventListener('click', toggleSeatStatus);
-        seatContainer.appendChild(seat);
+        if (seatNumber) {
+            const seat = document.createElement('div');
+            seat.classList.add('seat');
+            seat.textContent = seatNumber;
+            seat.dataset.position = seatNumber;
+            seat.addEventListener('click', toggleSeatStatus);
+            seatContainer.appendChild(seat);
+        } else {
+            const emptySpace = document.createElement('div');
+            emptySpace.classList.add('empty-space');
+            seatContainer.appendChild(emptySpace);
+        }
     });
 });
 
@@ -85,23 +91,4 @@ function toggleSeatStatus(event) {
     // Ajaxを使用してサーバーに更新を送信
     fetch('update_seat.php', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ position, status })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (!data.success) {
-            // 更新に失敗した場合、状態を元に戻す
-            seat.classList.toggle('occupied');
-            alert('更新に失敗しました。');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // エラーが発生した場合、状態を元に戻す
-        seat.classList.toggle('occupied');
-        alert('更新に失敗しました。');
-    });
-}
+       
