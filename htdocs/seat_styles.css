@@ -8,7 +8,7 @@ body {
 .seat-container {
     display: grid;
     grid-template-columns: repeat(28, 1fr);
-    gap: 16px;
+    gap: 12px;
 }
 
 .seat {
