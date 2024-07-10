@@ -1,78 +1,105 @@
 document.addEventListener('DOMContentLoaded', () => {
     const seatContainer = document.querySelector('.seat-container');
     const seatLayout = [
-        // 1-32
-        ...Array.from({ length: 32 }, (_, i) => i + 1),
-        // 33-48 (1行空白)
+        // 1-16
+        ...Array.from({ length: 16 }, (_, i) => i + 1),
+        // 17-32
+        ...Array.from({ length: 16 }, (_, i) => i + 17),
+        // 空白
+        ...Array(32).fill(''),
+        // 33-48
         ...Array.from({ length: 16 }, (_, i) => i + 33),
-        // 49-64 (1行空白)
+        // 49-64
         ...Array.from({ length: 16 }, (_, i) => i + 49),
+        // 空白
+        ...Array(32).fill(''),
         // 65-80
         ...Array.from({ length: 16 }, (_, i) => i + 65),
-        // 81-96 (1行空白)
+        // 81-96
         ...Array.from({ length: 16 }, (_, i) => i + 81),
-        // 97-112 (1行空白)
+        // 空白
+        ...Array(32).fill(''),
+        // 97-112
         ...Array.from({ length: 16 }, (_, i) => i + 97),
-        // 113-128 (1行空白)
+        // 113-128
         ...Array.from({ length: 16 }, (_, i) => i + 113),
+        // 空白
+        ...Array(32).fill(''),
         // 129-144
         ...Array.from({ length: 16 }, (_, i) => i + 129),
-        // 145-160 (1行空白)
+        // 145-160
         ...Array.from({ length: 16 }, (_, i) => i + 145),
-        // 161-176 (1行空白)
+        // 空白
+        ...Array(32).fill(''),
+        // 161-176
         ...Array.from({ length: 16 }, (_, i) => i + 161),
-        // 177-192 (1行空白)
+        // 177-192
         ...Array.from({ length: 16 }, (_, i) => i + 177),
+        // 空白
+        ...Array(32).fill(''),
         // 193-208
         ...Array.from({ length: 16 }, (_, i) => i + 193),
-        // 209-224 (1行空白)
+        // 209-224
         ...Array.from({ length: 16 }, (_, i) => i + 209),
-        // 225-240 (1行空白)
+        // 空白
+        ...Array(32).fill(''),
+        // 225-240
         ...Array.from({ length: 16 }, (_, i) => i + 225),
         // 241-256
         ...Array.from({ length: 16 }, (_, i) => i + 241),
-        // 257-272 (1行空白)
+        // 257-272
         ...Array.from({ length: 16 }, (_, i) => i + 257),
+        // 空白
+        ...Array(16).fill(''),
         // 273-288
         ...Array.from({ length: 16 }, (_, i) => i + 273),
         // 289-304
         ...Array.from({ length: 16 }, (_, i) => i + 289),
         // 305-320
         ...Array.from({ length: 16 }, (_, i) => i + 305),
-        // 321-336 (1行空白)
+        // 321-336
         ...Array.from({ length: 16 }, (_, i) => i + 321),
         // 337-352
         ...Array.from({ length: 16 }, (_, i) => i + 337),
-        // 353-368 (1行空白)
+        // 353-368
         ...Array.from({ length: 16 }, (_, i) => i + 353),
+        // 空白
+        ...Array(16).fill(''),
         // 369-384
         ...Array.from({ length: 16 }, (_, i) => i + 369),
-        // 385-400 (1行空白)
+        // 385-400
         ...Array.from({ length: 16 }, (_, i) => i + 385),
         // 401-416
         ...Array.from({ length: 16 }, (_, i) => i + 401),
-        // 417-432 (1行空白)
+        // 空白
+        ...Array(16).fill(''),
+        // 417-432
         ...Array.from({ length: 16 }, (_, i) => i + 417),
-        // 433-448 (1行空白)
+        // 433-448
         ...Array.from({ length: 16 }, (_, i) => i + 433),
+        // 空白
+        ...Array(16).fill(''),
         // 449-464
         ...Array.from({ length: 16 }, (_, i) => i + 449),
-        // 465-480 (1行空白)
+        // 465-480
         ...Array.from({ length: 16 }, (_, i) => i + 465),
+        // 空白
+        ...Array(16).fill(''),
         // 481-496
         ...Array.from({ length: 16 }, (_, i) => i + 481),
-        // 497-512 (1行空白)
+        // 497-512
         ...Array.from({ length: 16 }, (_, i) => i + 497),
-        // 513-516 (空白16席)
-        513, 514, 515, 516,
-        ...Array.from({ length: 12 }, () => '')
+        // 513-516
+        ...Array.from({ length: 4 }, (_, i) => i + 513),
+        // 空白
+        ...Array(28).fill('')
     ];
 
     seatLayout.forEach(seatNumber => {
         const seat = document.createElement('div');
         seat.classList.add('seat');
         seat.textContent = seatNumber || '';
-        seat.dataset.position = seatNumber;
+        if (seatNumber) seat.dataset.position = seatNumber;
         seat.addEventListener('click', toggleSeatStatus);
         seatContainer.appendChild(seat);
     });
