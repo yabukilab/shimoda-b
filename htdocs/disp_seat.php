@@ -20,11 +20,7 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <button type="submit" name="top">TOPへ</button>
 
         <div class="seat-container">
-        <?php foreach ($seats as $seat): ?>
-            <div class="seat <?= $seat['status'] ? 'occupied' : '' ?>">
-                <?= $seat['position'] ?>
-            </div>
-        <?php endforeach; ?>
+        <script src="status.js"></script>
         </div>    
     </body>
 </html>
