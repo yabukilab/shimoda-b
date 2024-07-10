@@ -56,10 +56,7 @@
         echo "</div>";
     }
 
-    echo "</div>";
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+
 
         ?>
 
