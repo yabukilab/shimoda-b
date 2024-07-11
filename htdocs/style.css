@@ -20,7 +20,7 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.5; /* 画像の明るさを控えめにする */
+  opacity: 0.8; /* 画像の明るさを控えめにする */
   z-index: -1;
 }
 
@@ -84,4 +84,5 @@ button {
   cursor: pointer; /* カーソルをポインタに */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.64); /* 軽い影を追加 */
   z-index: 1000; /* 他の要素の上に表示 */
+  text-shadow: 1px 1px 2px #000, 0 0 1px #000; /* 文字に輪郭をつける */
 }
