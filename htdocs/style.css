@@ -50,3 +50,21 @@ body {
     height: auto;
     display: block;
   }
+
+  button {
+    position: fixed; /* 画面に固定 */
+    bottom: 32px; /* 下からの位置 */
+    left: 32px; /* 左からの位置 */
+    width: 100px; /* 幅 */
+    height: 100px; /* 高さ */
+    background-color: rgb(105, 198, 229); /* 背景色を水色に */
+    color: rgb(255, 149, 0); /* テキストの色を白に */
+    border: none; /* 境界線をなくす */
+    border-radius: 50%; /* 丸い形にする */
+    font-size: 32px; /* テキストサイズを32pxに */
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* コンテンツを縦方向の中央に配置 */
+    justify-content: center; /* コンテンツを水平方向の中央に配置 */
+    cursor: pointer; /* カーソルをポインタに */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.64); /* 軽い影を追加 */
+    z-index: 1000; /* 他の要素の上に表示 */

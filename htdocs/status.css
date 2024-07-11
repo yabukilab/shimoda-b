@@ -15,7 +15,7 @@
     color: white;
     cursor: not-allowed;
 }
-.occupied {
+.seat.occupied {
     background-color: red;
 }
 .empty-space {
