@@ -51,7 +51,7 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $seatStatus = [];
         if ($result->$stmt > 0) {
             while($stmt = $result->fetch_assoc()) {
-                $seatStatus[$['position']] = $data['status'];
+                $data[$['position']] = $seatStatus['status'];
             }
         }
 
