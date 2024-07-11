@@ -1,7 +1,6 @@
 <?php
 require 'db.php'; 
 
-$stmt = $pdo->query('SELECT position, status FROM seat');
 $stmt = $pdo->prepare('SELECT position, status FROM seat ORDER BY position ASC');
 $stmt->execute();
 $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -19,12 +18,9 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <form action="index.php" method="post">
         <button type="submit" name="top">TOP</button>
-        <?php foreach ($seats as $seat): ?>
-        <div class="seat-container<?php echo $seat['status'] == 1 ? 'occupied' : ''; ?>">
-                <?php echo $seat['position']; ?>
-            <div class="seat-container <?= $seat['status'] ? 'occupied' : '' ?>">
-                <?= $seat['position'] ?>
-        <?php endforeach; ?>
+
+        <div class="seat-container">
+        <script src="status.js"></script>
         </div>    
     </body>
 </html>
