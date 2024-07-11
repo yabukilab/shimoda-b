@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('get_seats.php')
         .then(response => response.json())
         .then(data => {
-            Object.assign(status, data);
+            Object.assign(position, status);
             renderSeats();
         })
         .catch(error => {
