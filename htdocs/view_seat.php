@@ -38,7 +38,7 @@
        include 'db.php';
        
        // 座席の状態を取得するクエリ
-       $sql = "SELECT position, status FROM seats";
+       $sql = "SELECT position, status FROM seat";
        $result = $pdo->query($sql);
        
        // 座席状態を配列に格納
