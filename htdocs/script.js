@@ -84,6 +84,18 @@ function toggleSeatStatus(event) {
             alert('更新に失敗しました。');
         }
     })
+
+    fetch('get_seats.php')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(seat => {
+                if (seat.status == 1) {
+                    document.querySelector(`.seat[data-position='${seat.position}']`).classList.add('occupied');
+                }
+            });
+        })
+
+
     .catch(error => {
         console.error('Error:', error);
         // エラーが発生した場合、状態を元に戻す
