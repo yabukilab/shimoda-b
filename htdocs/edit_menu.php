@@ -36,9 +36,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_menu'])) {
 
     // エラーがない場合、データベースに登録
     if (empty($errors)) {
+        // 使用中のメニュー番号を取得
+        $stmt = $pdo->query('SELECT code FROM menu ORDER BY code ASC');
+        $usedCodes = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        // 空いている最小のメニュー番号を見つける
+        $code = 1;
+        foreach ($usedCodes as $usedCode) {
+            if ($code == $usedCode) {
+                $code++;
+            } else {
+                break;
+            }
+        }
+
         $imageData = file_get_contents($image);
-        $stmt = $pdo->prepare('INSERT INTO menu (sort, name, price, image) VALUES (?, ?, ?, ?)');
-        if ($stmt->execute([$sort, $name, $price, $imageData])) {
+        $stmt = $pdo->prepare('INSERT INTO menu (sort, name, price, image, code) VALUES (?, ?, ?, ?, ?)');
+        if ($stmt->execute([$sort, $name, $price, $imageData, $code])) {
             $success = 'メニューが正常に追加されました。';
         } else {
             $errors[] = 'メニューの追加に失敗しました。';
@@ -106,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_menu'])) {
         <div class="form-container">
             <h2>メニュー追加</h2>
             <form action="edit_menu.php" method="post" enctype="multipart/form-data">
-                <label for="sort">メニュー区分(カテゴリー):</label>
+                <label for="sort">メニュー区分:</label>
                 <input type="text" name="sort" id="sort" required><br>
                 <label for="name">メニュー名:</label>
                 <input type="text" name="name" id="name" required><br>
