@@ -25,12 +25,12 @@
 
 button {
     position: fixed; /* 画面に固定 */
-    bottom: 28px; /* 下から20pxの位置 */
-    left: 28px; /* 左から20pxの位置 */
-    width: 100px; /* 幅70px */
-    height: 100px; /* 高さ70px */
+    bottom: 32px; /* 下からの位置 */
+    left: 32px; /* 左からの位置 */
+    width: 100px; /* 幅 */
+    height: 100px; /* 高さ */
     background-color: lightblue; /* 背景色を水色に */
-    color: rgb(234, 254, 81); /* テキストの色を白に */
+    color: rgb(238, 234, 3); /* テキストの色を白に */
     border: none; /* 境界線をなくす */
     border-radius: 50%; /* 丸い形にする */
     font-size: 32px; /* テキストサイズを32pxに */
