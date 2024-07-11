@@ -47,47 +47,68 @@ document.addEventListener('DOMContentLoaded', () => {
         '', '', '', '', '', '', '', '', 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 512, 513, 514, 515, 516,
     ];
 
-    seatLayout.forEach(seatNumber => {
-        if (seatNumber) {
-            const seat = document.createElement('div');
-            seat.classList.add('seat');
-            seat.textContent = seatNumber;
-            seat.dataset.position = seatNumber;
-            seat.addEventListener('click', toggleSeatStatus);
-            seatContainer.appendChild(seat);
-        } else {
-            const emptySpace = document.createElement('div');
-            emptySpace.classList.add('empty-space');
-            seatContainer.appendChild(emptySpace);
-        }
-    });
-});
+    const seatStatus = {};
 
-function toggleSeatStatus(event) {
-    const seat = event.target;
-    const position = seat.dataset.position;
-    const status = seat.classList.toggle('occupied') ? 1 : 0;
+    fetch('get_seats.php')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(seat => {
+                seatStatus[seat.position] = seat.status;
+            });
+            renderSeats();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 
-    // Ajaxを使用してサーバーに更新を送信
-    fetch('update_seat.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ position, status })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (!data.success) {
-            // 更新に失敗した場合、状態を元に戻す
+    function renderSeats() {
+        seatLayout.forEach(seatNumber => {
+            if (seatNumber === '') {
+                const emptySpace = document.createElement('div');
+                emptySpace.className = 'empty-space';
+                seatContainer.appendChild(emptySpace);
+            } else {
+                const seat = document.createElement('div');
+                seat.className = 'seat';
+                if (seatStatus[seatNumber] == 1) {
+                    seat.classList.add('occupied');
+                }
+                seat.textContent = seatNumber;
+                seat.dataset.position = seatNumber;
+                seat.addEventListener('click', toggleSeatStatus);
+                seatContainer.appendChild(seat);
+            }
+        });
+    }
+
+    function toggleSeatStatus(event) {
+        const seat = event.target;
+        const position = seat.dataset.position;
+        const status = seat.classList.toggle('occupied') ? 1 : 0;
+
+        // Ajaxを使用してサーバーに更新を送信
+        fetch('update_seat.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ position, status })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                // 更新に失敗した場合、状態を元に戻す
+                seat.classList.toggle('occupied');
+                alert('更新に失敗しました。');
+            } else {
+                console.log('更新に成功しました:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // エラーが発生した場合、状態を元に戻す
             seat.classList.toggle('occupied');
             alert('更新に失敗しました。');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // エラーが発生した場合、状態を元に戻す
-        seat.classList.toggle('occupied');
-        alert('更新に失敗しました。');
-    });
-}
+        });
+    }
+});
