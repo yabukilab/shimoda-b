@@ -37,7 +37,7 @@
         $servername = "localhost";
         $username = "testuser";
         $password = "pass";
-        $dbname = "shimoda-b";
+        $dbname = "shimodab";
 
         // データベースに接続
         $conn = new mysqli($servername, $username, $password, $dbname);
