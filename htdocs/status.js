@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const seatStatus = {};
 
-    fetch('update_seat.php')
+    fetch('get_seats.php')
         .then(response => response.json())
         .then(data => {
             Object.assign(seatStatus, data);
