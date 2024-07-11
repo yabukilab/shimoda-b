@@ -17,7 +17,7 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h1>座席利用状況</h1>
 
         <form action="index.php" method="post">
-        <button type="submit" name="top">TOPへ</button>
+        <button type="submit" name="top">TOP</button>
 
         <div class="seat-container">
         <script src="status.js"></script>
