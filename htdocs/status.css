@@ -24,11 +24,20 @@
 }
 
 button {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+    position: fixed; /* 画面全体に固定 */
+    top: 0;
+    left: 0;
+    width: 100vw; /* ビューポートの全幅 */
+    height: 100vh; /* ビューポートの全高 */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景色 */
+    color: white;
+    border: none;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    z-index: 9999; /* 他の要素の上に表示 */
 }
 
 h1 {
