@@ -1,6 +1,7 @@
 <?php
 require 'db.php'; 
 
+$stmt = $pdo->query('SELECT position, status FROM seat');
 $stmt = $pdo->prepare('SELECT position, status FROM seat ORDER BY position ASC');
 $stmt->execute();
 $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
