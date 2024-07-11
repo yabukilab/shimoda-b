@@ -9,13 +9,17 @@ if (isset($data['position']) && isset($data['status'])) {
     $position = $data['position'];
     $status = $data['status'];
 
-    $stmt = $pdo->prepare('UPDATE seat SET status = ? WHERE position = ?');
-    if ($stmt->execute([$status, $position])) {
-        echo json_encode(['success' => true]);
-    } else {
-        echo json_encode(['success' => false]);
+    try {
+        $stmt = $pdo->prepare('UPDATE seat SET status = ? WHERE position = ?');
+        if ($stmt->execute([$status, $position])) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => 'Failed to execute statement.']);
+        }
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'error' => $e->getMessage()]);
     }
 } else {
-    echo json_encode(['success' => false]);
+    echo json_encode(['success' => false, 'error' => 'Invalid input.']);
 }
 ?>

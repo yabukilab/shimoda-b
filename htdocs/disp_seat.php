@@ -1,11 +1,3 @@
-<?php
-require 'db.php'; 
-
-$stmt = $pdo->prepare('SELECT position, status FROM seat ORDER BY position ASC');
-$stmt->execute();
-$seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
