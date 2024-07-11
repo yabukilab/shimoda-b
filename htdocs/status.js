@@ -52,7 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('get_seats.php')
         .then(response => response.json())
         .then(data => {
-            Object.assign(seatStatus, data);
+            data.forEach(seat => {
+                seatStatus[seat.position] = seat.status;
+            });
             renderSeats();
         })
         .catch(error => {
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 const seat = document.createElement('div');
                 seat.className = 'seat';
-                if (seatStatus[seatNumber] === 'occupied') {
+                if (seatStatus[seatNumber] == 1) {
                     seat.classList.add('occupied');
                 }
                 seat.textContent = seatNumber;
