@@ -1,11 +1,3 @@
-<?php
-require 'db.php'; 
-
-$stmt = $pdo->prepare('SELECT position, status FROM seat ORDER BY position ASC');
-$stmt->execute();
-$seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -14,7 +6,7 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <style>
         .seat-container {
             display: grid;
-            grid-template-columns: repeat(28, 1fr);
+            grid-template-columns: repeat(24, 1fr);
             gap: 5px;
         }
         .seat {
@@ -49,9 +41,9 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // 座席状態を配列に格納
         $seatStatus = [];
-        if ($result->$stmt > 0) {
-            while($stmt = $result->fetch_assoc()) {
-                $data[$['position']] = $seatStatus['status'];
+        if ($result->rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $seatStatus[$row['position']] = $row['status'];
             }
         }
 
