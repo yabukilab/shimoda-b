@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_menu'])) {
         <div class="form-container">
             <h2>メニュー追加</h2>
             <form action="edit_menu.php" method="post" enctype="multipart/form-data">
-                <label for="sort">メニュー区分:</label>
+                <label for="sort">メニュー区分(カテゴリー):</label>
                 <input type="text" name="sort" id="sort" required><br>
                 <label for="name">メニュー名:</label>
                 <input type="text" name="name" id="name" required><br>
