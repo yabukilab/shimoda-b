@@ -41,9 +41,9 @@
 
         // 座席状態を配列に格納
         $seatStatus = [];
-        if ($result->$row > 0) {
+        if ($result->$data > 0) {
             while($row = $result->fetch_assoc()) {
-                $seatStatus[$row['position']] = $row['status'];
+                $seatStatus[$['position']] = $data['status'];
             }
         }
 
