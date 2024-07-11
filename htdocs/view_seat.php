@@ -39,7 +39,7 @@
        
        // 座席の状態を取得するクエリ
        $sql = "SELECT position, status FROM seats";
-       $result = $conn->query($sql);
+       $result = $pdo->query($sql);
        
        // 座席状態を配列に格納
        $seatStatus = [];
@@ -48,9 +48,6 @@
                $seatStatus[$row['position']] = $row['status'];
            }
        }
-       
-       // データベース接続を閉じる
-       $conn->close();
        
        // 配列をJSON形式で出力
        header('Content-Type: application/json');
