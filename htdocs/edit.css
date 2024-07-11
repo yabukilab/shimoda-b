@@ -12,7 +12,6 @@ body {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
 }
 
 h1 {
@@ -20,17 +19,15 @@ h1 {
     color: #333;
 }
 
-.error-messages {
+.errors ul {
     color: red;
     list-style-type: none;
     padding: 0;
-    margin-bottom: 20px;
 }
 
-.success-messages {
+.success p {
     color: green;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .form-container {
@@ -54,7 +51,7 @@ input[type="file"] {
     border-radius: 4px;
 }
 
-button[type="submit"] {
+input[type="submit"] {
     padding: 10px;
     background-color: #5cb85c;
     color: white;
@@ -62,9 +59,8 @@ button[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
 }
 
-button[type="submit"]:hover {
+input[type="submit"]:hover {
     background-color: #4cae4c;
 }
