@@ -12,7 +12,7 @@
 
         <h1>本日のメニュー</h1>
         <form action="disp_seat.php" method="post">
-        <button type="submit" name="seat">混雑状況確認</button>
+        <button type="submit" name="seat">混雑状況</button>
 
         <?php
 
