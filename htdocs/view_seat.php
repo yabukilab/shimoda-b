@@ -49,9 +49,6 @@
            }
        }
        
-       // 配列をJSON形式で出力
-       header('Content-Type: application/json');
-       echo json_encode($seatStatus);
        
        
 
@@ -104,6 +101,10 @@
         '', '', '', '', '', '', '', '', 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 512, 513, 514, 515, 516,  
         ];
 
+        // 配列をJSON形式で出力
+        header('Content-Type: application/json');
+        echo json_encode($seatStatus);
+       
         foreach ($seatLayout as $seatNumber) {
             if ($seatNumber) {
                 $status = isset($seatStatus[$seatNumber]) ? $seatStatus[$seatNumber] : 0;
