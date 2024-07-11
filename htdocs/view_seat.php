@@ -33,19 +33,30 @@
     <h1>座席利用状況</h1>
     <div class="seat-container">
         <?php
-        include 'db.php';
-
-        // 座席の状態を取得
-        $sql = "SELECT position, status FROM seat";
-        $result = $pdo->query($sql);
-
-        // 座席状態を配列に格納
-        $seatStatus = [];
-        if ($result->rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                $seatStatus[$row['position']] = $row['status'];
-            }
-        }
+       
+       // データベース接続情報を含むファイルをインクルード
+       include 'db.php';
+       
+       // 座席の状態を取得するクエリ
+       $sql = "SELECT position, status FROM seats";
+       $result = $conn->query($sql);
+       
+       // 座席状態を配列に格納
+       $seatStatus = [];
+       if ($result->num_rows > 0) {
+           while($row = $result->fetch_assoc()) {
+               $seatStatus[$row['position']] = $row['status'];
+           }
+       }
+       
+       // データベース接続を閉じる
+       $conn->close();
+       
+       // 配列をJSON形式で出力
+       header('Content-Type: application/json');
+       echo json_encode($seatStatus);
+       
+       
 
         // 座席配置の配列
         $seatLayout = [
