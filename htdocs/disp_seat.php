@@ -19,9 +19,12 @@ $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <form action="index.php" method="post">
         <button type="submit" name="top">TOP</button>
-
-        <div class="seat-container">
-        <script src="status.js"></script>
+        <?php foreach ($seats as $seat): ?>
+        <div class="seat-container<?php echo $seat['status'] == 1 ? 'occupied' : ''; ?>">
+                <?php echo $seat['position']; ?>
+            <div class="seat-container <?= $seat['status'] ? 'occupied' : '' ?>">
+                <?= $seat['position'] ?>
+        <?php endforeach; ?>
         </div>    
     </body>
 </html>
