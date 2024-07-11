@@ -1,7 +1,68 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const seatContainer = document.querySelector('.seat-container');
-    const seatLayout = [
-         1,  2,  3,  4,  5,  6,  7,  8, '', '',  9, 10, 11, 12, 13, 14, 15, 16, '', '', 17, 18, 19, 20, 21, 22, 23, 24,
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>座席利用状況</title>
+    <style>
+        .seat-container {
+            display: grid;
+            grid-template-columns: repeat(24, 1fr);
+            gap: 5px;
+        }
+        .seat {
+            width: 40px;
+            height: 40px;
+            background-color: lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .occupied {
+            background-color: green;
+        }
+        .empty-space {
+            width: 40px;
+            height: 40px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>座席利用状況</h1>
+    <div class="seat-container">
+        <?php
+        // データベース接続情報
+        $servername = "localhost";
+        $username = "testuser";
+        $password = "pass";
+        $dbname = "shimoda-b";
+
+        // データベースに接続
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // 接続をチェック
+        if ($conn->connect_error) {
+            die("データベース接続に失敗しました: " . $conn->connect_error);
+        }
+
+        // 座席の状態を取得
+        $sql = "SELECT position, status FROM seat";
+        $result = $conn->query($sql);
+
+        // 座席状態を配列に格納
+        $seatStatus = [];
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $seatStatus[$row['position']] = $row['status'];
+            }
+        }
+
+        // 座席配置の配列
+        $seatLayout = [
+            // ここに座席配置の配列を入力します
+            1,  2,  3,  4,  5,  6,  7,  8, '', '',  9, 10, 11, 12, 13, 14, 15, 16, '', '', 17, 18, 19, 20, 21, 22, 23, 24,
         25, 26, 27, 28, 29, 30, 31, 32, '', '', 33, 34, 35, 36, 37, 38, 39, 40, '', '', 41, 42, 43, 44, 45, 46, 47, 48,
         '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
         49, 50, 51, 52, 53, 54, 55, 56, '', '', 57, 58, 59, 60, 61, 62, 63, 64, '', '', 65, 66, 67, 68, 69, 70, 71, 72,
@@ -44,50 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
         '', '', '', '', '', '', '',488, '', '', '', 489, 490, '', '', 491, 492, '', '', '', '', 493, 494, '', '', 495, 496, '',
         '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
         '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 512, 513, 514, 515, 516,
-    ];
+        '', '', '', '', '', '', '', '', 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 512, 513, 514, 515, 516,  
+        ];
 
-    seatLayout.forEach(seatNumber => {
-        if (seatNumber) {
-            const seat = document.createElement('div');
-            seat.classList.add('seat');
-            seat.textContent = seatNumber;
-            seat.dataset.position = seatNumber;
-            seat.addEventListener('click', toggleSeatStatus);
-            seatContainer.appendChild(seat);
-        } else {
-            const emptySpace = document.createElement('div');
-            emptySpace.classList.add('empty-space');
-            seatContainer.appendChild(emptySpace);
+        foreach ($seatLayout as $seatNumber) {
+            if ($seatNumber) {
+                $status = isset($seatStatus[$seatNumber]) ? $seatStatus[$seatNumber] : 0;
+                $occupiedClass = $status ? 'occupied' : '';
+                echo "<div class='seat $occupiedClass'>$seatNumber</div>";
+            } else {
+                echo "<div class='empty-space'></div>";
+            }
         }
-    });
-});
 
-function toggleSeatStatus(event) {
-    const seat = event.target;
-    const position = seat.dataset.position;
-    const status = seat.classList.toggle('occupied') ? 1 : 0;
-
-    // Ajaxを使用してサーバーに更新を送信
-    fetch('update_seat.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ position, status })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (!data.success) {
-            // 更新に失敗した場合、状態を元に戻す
-            seat.classList.toggle('occupied');
-            alert('更新に失敗しました。');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // エラーが発生した場合、状態を元に戻す
-        seat.classList.toggle('occupied');
-        alert('更新に失敗しました。');
-    });
-}
+        $conn->close();
+        ?>
+    </div>
+    <br>
+    <button onclick="window.location.href='index.php'">戻る</button>
+</body>
+</html>
