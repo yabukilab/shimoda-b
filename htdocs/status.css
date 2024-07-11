@@ -25,12 +25,12 @@
 
 button {
     position: fixed; /* 画面に固定 */
-    bottom: 20px; /* 下から20pxの位置 */
-    left: 20px; /* 左から20pxの位置 */
-    width: 70px; /* 幅70px */
-    height: 70px; /* 高さ70px */
+    bottom: 28px; /* 下から20pxの位置 */
+    left: 28px; /* 左から20pxの位置 */
+    width: 100px; /* 幅70px */
+    height: 100px; /* 高さ70px */
     background-color: lightblue; /* 背景色を水色に */
-    color: white; /* テキストの色を白に */
+    color: rgb(234, 254, 81); /* テキストの色を白に */
     border: none; /* 境界線をなくす */
     border-radius: 50%; /* 丸い形にする */
     font-size: 32px; /* テキストサイズを32pxに */
@@ -38,7 +38,7 @@ button {
     align-items: center; /* コンテンツを縦方向の中央に配置 */
     justify-content: center; /* コンテンツを水平方向の中央に配置 */
     cursor: pointer; /* カーソルをポインタに */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 軽い影を追加 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.545); /* 軽い影を追加 */
     z-index: 1000; /* 他の要素の上に表示 */
 }
 
