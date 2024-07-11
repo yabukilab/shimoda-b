@@ -1,8 +1,6 @@
 <?php
-// データベース接続ファイルを読み込み
 require 'db.php';
 
-// 初期化
 $errors = [];
 $success = '';
 
@@ -62,40 +60,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_menu'])) {
 <head>
     <meta charset="UTF-8">
     <title>メニュー編集</title>
+    <link rel="stylesheet" href="edit.css">
 </head>
 <body>
-    <h1>メニュー編集</h1>
+    <div class="container">
+        <h1>メニュー編集</h1>
 
-    <?php if (!empty($errors)): ?>
-        <ul style="color: red;">
-            <?php foreach ($errors as $error): ?>
-                <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
-            <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
+        <?php if (!empty($errors)): ?>
+            <div class="errors">
+                <ul>
+                    <?php foreach ($errors as $error): ?>
+                        <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
-    <?php if (!empty($success)): ?>
-        <p style="color: green;"><?php echo htmlspecialchars($success, ENT_QUOTES, 'UTF-8'); ?></p>
-    <?php endif; ?>
+        <?php if (!empty($success)): ?>
+            <div class="success">
+                <p><?php echo htmlspecialchars($success, ENT_QUOTES, 'UTF-8'); ?></p>
+            </div>
+        <?php endif; ?>
 
-    <h2>メニュー追加</h2>
-    <form action="edit_menu.php" method="post" enctype="multipart/form-data">
-        <label for="sort">メニュー区分:</label>
-        <input type="text" name="sort" id="sort"><br>
-        <label for="name">メニュー名:</label>
-        <input type="text" name="name" id="name"><br>
-        <label for="price">価格:</label>
-        <input type="text" name="price" id="price"><br>
-        <label for="image">画像:</label>
-        <input type="file" name="image" id="image"><br>
-        <input type="submit" name="add_menu" value="追加">
-    </form>
+        <div class="form-container">
+            <h2>メニュー追加</h2>
+            <form action="edit_menu.php" method="post" enctype="multipart/form-data">
+                <label for="sort">メニュー区分:</label>
+                <input type="text" name="sort" id="sort" required><br>
+                <label for="name">メニュー名:</label>
+                <input type="text" name="name" id="name" required><br>
+                <label for="price">価格:</label>
+                <input type="text" name="price" id="price" required><br>
+                <label for="image">画像:</label>
+                <input type="file" name="image" id="image" required><br>
+                <input type="submit" name="add_menu" value="追加">
+            </form>
+        </div>
 
-    <h2>メニュー削除</h2>
-    <form action="edit_menu.php" method="post">
-        <label for="code">メニュー番号:</label>
-        <input type="text" name="code" id="code"><br>
-        <input type="submit" name="delete_menu" value="削除">
-    </form>
+        <div class="form-container">
+            <h2>メニュー削除</h2>
+            <form action="edit_menu.php" method="post">
+                <label for="code">メニュー番号:</label>
+                <input type="text" name="code" id="code" required><br>
+                <input type="submit" name="delete_menu" value="削除">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
