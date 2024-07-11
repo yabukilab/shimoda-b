@@ -41,7 +41,7 @@
 
         // 座席状態を配列に格納
         $seatStatus = [];
-        if ($result->num_rows > 0) {
+        if ($result->$row > 0) {
             while($row = $result->fetch_assoc()) {
                 $seatStatus[$row['position']] = $row['status'];
             }
@@ -106,7 +106,6 @@
             }
         }
 
-        $pdo->close();
         ?>
     </div>
     <br>
