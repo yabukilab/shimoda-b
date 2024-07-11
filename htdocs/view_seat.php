@@ -37,7 +37,7 @@
 
         // 座席の状態を取得
         $sql = "SELECT position, status FROM seat";
-        $result = $conn->query($sql);
+        $result = $pdo->query($sql);
 
         // 座席状態を配列に格納
         $seatStatus = [];
@@ -106,7 +106,7 @@
             }
         }
 
-        $conn->close();
+        $pdo->close();
         ?>
     </div>
     <br>
