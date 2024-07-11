@@ -33,19 +33,7 @@
     <h1>座席利用状況</h1>
     <div class="seat-container">
         <?php
-        // データベース接続情報
-        $servername = "localhost";
-        $username = "testuser";
-        $password = "pass";
-        $dbname = "shimodab";
-
-        // データベースに接続
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // 接続をチェック
-        if ($conn->connect_error) {
-            die("データベース接続に失敗しました: " . $conn->connect_error);
-        }
+        include 'db.php';
 
         // 座席の状態を取得
         $sql = "SELECT position, status FROM seat";
