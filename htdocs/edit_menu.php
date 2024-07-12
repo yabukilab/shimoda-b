@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_menu'])) {
 
     if (empty($image)) {
         $errors[] = '画像を選択してください。';
-    } elseif (!in_array($imageType, ['image/jpeg', 'image/png', 'image/gif'])) {
-        $errors[] = '有効な画像形式（JPEG, PNG, GIF）を選択してください。';
+    } elseif (!in_array($imageType, ['image/jpeg', 'image/png'])) {
+        $errors[] = '有効な画像形式（JPEG, PNG）を選択してください。';
     }
 
     // エラーがない場合、データベースに登録
