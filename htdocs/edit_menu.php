@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_menu'])) {
     $name = $_POST['name'] ?? '';
     $price = $_POST['price'] ?? '';
     $image = $_FILES['image']['tmp_name'] ?? '';
+    $imageType = $_FILES['image']['type'] ?? '';
 
     // 入力チェック
     if (empty($sort)) {
@@ -32,13 +33,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_menu'])) {
 
     if (empty($image)) {
         $errors[] = '画像を選択してください。';
+    } elseif (!in_array($imageType, ['image/jpeg', 'image/png', 'image/gif'])) {
+        $errors[] = '有効な画像形式（JPEG, PNG, GIF）を選択してください。';
     }
 
     // エラーがない場合、データベースに登録
     if (empty($errors)) {
+        $imageData = file_get_contents($image);
+        $stmt = $pdo->prepare('INSERT INTO menu (sort, name, price, image, code) VALUES (?, ?, ?, ?, ?)');
+        
         // 使用中のメニュー番号を取得
-        $stmt = $pdo->query('SELECT code FROM menu ORDER BY code ASC');
-        $usedCodes = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        $stmtCode = $pdo->query('SELECT code FROM menu ORDER BY code ASC');
+        $usedCodes = $stmtCode->fetchAll(PDO::FETCH_COLUMN);
 
         // 空いている最小のメニュー番号を見つける
         $code = 1;
@@ -50,8 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_menu'])) {
             }
         }
 
-        $imageData = file_get_contents($image);
-        $stmt = $pdo->prepare('INSERT INTO menu (sort, name, price, image, code) VALUES (?, ?, ?, ?, ?)');
         if ($stmt->execute([$sort, $name, $price, $imageData, $code])) {
             $success = 'メニューが正常に追加されました。';
         } else {
