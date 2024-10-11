@@ -1,0 +1,52 @@
+html 
+.container{
+    width: 90%;
+    max-width: 1120px;
+    background-color: antiquewhite;
+    margin: 0 auto;
+}
+
+.flex{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+header{
+    padding: 27px 0;
+}
+.logo{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/*これより上触れるな*/
+
+/*これより下を変更情報として追記する*/
+
+table{
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    border: solid 2px #595959;
+}
+td, th {
+    padding: 5px;
+    width: 200px;
+    display: block;
+    text-align: left;
+    border: solid 1px #595959;
+}
+td{
+    vertical-align: middle;
+    text-align: center;
+}
+th {
+    background: antiquewhite;
+}
+
+a:focus{
+    outline: 3px solid #ffcc00;
+}
