@@ -1,0 +1,67 @@
+html 
+.container{
+    width: 90%;
+    max-width: 1120px;
+    background-color: antiquewhite;
+    margin: 0 auto;
+}
+
+.flex{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+header{
+    padding: 27px 0;
+}
+.logo{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/*これより上触れるな*/
+
+/*これより下を変更情報として追記すること*/
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: solid 2px #595959;
+}
+td, th {
+    padding: 5px;
+    width: 200px;
+    border: solid 1px #595959;
+}
+td{
+    vertical-align: middle;
+    text-align: center;
+}
+th {
+    background: antiquewhite;
+}
+
+div.naiyou{
+    max-width: 1120px;
+    min-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+div.naiyou img { width: 90%; }
+
+.jumplink{
+    font-size: 40px;
+}
+.jumplink2{
+    font-size: 32px;
+}
+
+div.naiyou2{
+    max-width: 480px;
+    min-width: 320px;
+    margin: auto;
+    text-align: center;
+}
+div.naiyou2 img { width: 90%; }
