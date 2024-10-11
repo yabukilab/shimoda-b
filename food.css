@@ -151,3 +151,11 @@ iframe {
     width: 250px; /* 画像のサイズを少し大きく調整 */
     height: auto; /* アスペクト比を保持 */
 }
+
+iframe {
+    width: 100%; /* 親要素の幅に合わせる */
+    max-width: 600px; /* 最大幅を600pxに設定 */
+    height: 400px; /* 高さを400pxに設定 */
+    border-radius: 8px; /* 角を丸くする */
+    border: none; /* ボーダーをなくす */
+}
