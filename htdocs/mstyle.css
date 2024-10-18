@@ -26,3 +26,26 @@ footer {
     margin-top: 20px;
     color: #777;
 }
+
+html 
+.container{
+    width: 90%;
+    max-width: 1120px;
+    background-color: antiquewhite;
+    margin: 0 auto;
+}
+
+.flex{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+header2{
+    padding: 27px 0;
+}
+.logo{
+    font-size: 24px;
+    font-weight: 700;
+}
