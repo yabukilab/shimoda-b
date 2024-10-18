@@ -25,7 +25,7 @@ header h1 {
     /* 白い文字でコントラストを強調 */
 }
 
-#chart {
+#concept {
     margin: 0 auto;
     width: 85%;
     background-color: #fff;
@@ -37,7 +37,7 @@ header h1 {
     /* チャート内の文字を大きめに */
 }
 
-#chart h2 {
+#concept h2 {
     text-align: center;
     font-size: 1.6em;
     margin-bottom: 25px;
@@ -45,28 +45,28 @@ header h1 {
     /* 目立つように明るい青を使用 */
 }
 
-#chart ol {
+#concept ol {
     list-style-type: none;
     padding: 0;
 }
 
-#chart li {
+#concept li {
     margin-bottom: 20px;
     font-size: 1.3em;
     /* 質問の文字サイズをさらに大きく */
 }
 
-#chart li ul li {
+#concept li ul li {
     margin-bottom: 12px;
 }
 
-#chart a {
+#concept a {
     color: #ff7f50;
     /* コーラルカラーでリンクを強調 */
     font-weight: bold;
 }
 
-#restaurants {
+#all_park {
     margin: 50px auto;
     width: 85%;
     background-color: #ffffff;
@@ -75,7 +75,7 @@ header h1 {
     padding: 25px;
 }
 
-#restaurants {
+#all_park {
     margin: 40px auto;
     /* セクションの上下マージンを調整 */
     width: 90%;
@@ -88,14 +88,14 @@ header h1 {
     /* パディングを調整 */
 }
 
-#restaurants h2 {
+#all_park h2 {
     text-align: center;
     font-size: 1.8em; /* フォントサイズを大きく */
     margin-bottom: 20px;
     color: blue; /* ここを青に変更 */
 }
 
-#restaurants div {
+#all_park div {
     margin-bottom: 40px;
     /* 各店舗の間隔を調整 */
     border: 1px solid #ddd;
@@ -106,7 +106,7 @@ header h1 {
     /* パディングを追加 */
 }
 
-#restaurants div h3 {
+#all_park div h3 {
     font-size: 1.6em;
     /* フォントサイズを大きく */
     color: #000;
