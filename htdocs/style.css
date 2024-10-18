@@ -101,12 +101,8 @@ th {
 }
 
 div.naiyou{
-    max-width: 1120px;
-    min-width: 640px;
-    margin: 0 auto;
     text-align: center;
 }
-div.naiyou img { width: 90%; }
 
 .jumplink{
     font-size: 40px;
@@ -116,9 +112,25 @@ div.naiyou img { width: 90%; }
 }
 
 div.naiyou2{
-    max-width: 480px;
-    min-width: 320px;
-    margin: auto;
     text-align: center;
 }
-div.naiyou2 img { width: 90%; }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.naiyou, .naiyou2 {
+    width: 48%; /* 2つの要素を横並びにするために幅を50%未満に調整 */
+    margin-bottom: 20px; /* 下に余白を設定 */
+}
+
+.naiyou img, .naiyou2 img {
+    width: 100%; /* 画像の幅を親要素に合わせる */
+    height: auto;
+}
+
+.jumplink, .jumplink2 {
+    text-align: center;
+}

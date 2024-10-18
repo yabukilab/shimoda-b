@@ -27,15 +27,14 @@ header{
 
 table{
     width: 100%;
-    display: block;
     overflow-x: auto;
     border-collapse: collapse;
     border: solid 2px #595959;
+    font-size: large;
 }
 td, th {
     padding: 5px;
     width: 200px;
-    display: block;
     text-align: left;
     border: solid 1px #595959;
 }
@@ -49,4 +48,8 @@ th {
 
 a:focus{
     outline: 3px solid #ffcc00;
+}
+
+div.expl{
+    font-size: large;
 }
