@@ -30,7 +30,7 @@ table{
     overflow-x: auto;
     border-collapse: collapse;
     border: solid 2px #595959;
-    font-size: large;
+    font-size: x-large;
 }
 td, th {
     padding: 5px;
@@ -51,5 +51,5 @@ a:focus{
 }
 
 div.expl{
-    font-size: large;
+    font-size: x-large;
 }
