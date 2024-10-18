@@ -1,0 +1,161 @@
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #f0f4f8;
+    /* 柔らかい青系の背景色 */
+    color: #333;
+    line-height: 1.8;
+    /* 行間を広げて読みやすく */
+    font-size: 18px;
+    /* 基本フォントサイズを大きく */
+}
+
+header {
+    text-align: center;
+    background-color: #8fbcd4;
+    /* 落ち着いた青系の背景色 */
+    padding: 30px;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+header h1 {
+    font-size: 2.2em;
+    /* タイトルをさらに大きく */
+    color: #ffffff;
+    /* 白い文字でコントラストを強調 */
+}
+
+#chart {
+    margin: 0 auto;
+    width: 85%;
+    background-color: #fff;
+    border-radius: 15px;
+    /* 角を少し丸く */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    font-size: 1.2em;
+    /* チャート内の文字を大きめに */
+}
+
+#chart h2 {
+    text-align: center;
+    font-size: 1.6em;
+    margin-bottom: 25px;
+    color: #4a90e2;
+    /* 目立つように明るい青を使用 */
+}
+
+#chart ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+#chart li {
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    /* 質問の文字サイズをさらに大きく */
+}
+
+#chart li ul li {
+    margin-bottom: 12px;
+}
+
+#chart a {
+    color: #ff7f50;
+    /* コーラルカラーでリンクを強調 */
+    font-weight: bold;
+}
+
+#restaurants {
+    margin: 50px auto;
+    width: 85%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+
+#restaurants {
+    margin: 40px auto;
+    /* セクションの上下マージンを調整 */
+    width: 90%;
+    /* 幅を広げる */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* シャドウを強調 */
+    padding: 30px;
+    /* パディングを調整 */
+}
+
+#restaurants h2 {
+    text-align: center;
+    font-size: 1.8em; /* フォントサイズを大きく */
+    margin-bottom: 20px;
+    color: blue; /* ここを青に変更 */
+}
+
+#restaurants div {
+    margin-bottom: 40px;
+    /* 各店舗の間隔を調整 */
+    border: 1px solid #ddd;
+    /* ボーダーを追加 */
+    border-radius: 8px;
+    /* 角を丸くする */
+    padding: 20px;
+    /* パディングを追加 */
+}
+
+#restaurants div h3 {
+    font-size: 1.6em;
+    /* フォントサイズを大きく */
+    color: #000;
+}
+
+#restaurants div p {
+    font-size: 1.2em;
+    /* フォントサイズを調整 */
+    color: #666;
+}
+
+.restaurant-content {
+    display: flex;
+    /* フレックスボックスを使用 */
+    align-items: center;
+    /* 中央揃え */
+    gap: 20px;
+    /* アイテム間の隙間を調整 */
+}
+
+.restaurant-content img {
+    width: 200px;
+    /* 画像のサイズを調整 */
+    height: auto;
+    /* アスペクト比を保持 */
+}
+
+iframe {
+    border-radius: 8px;
+    /* 地図の角を丸くする */
+}
+
+/* 順序付きリストの数字が表示されるように設定 */
+#chart ol {
+    list-style-type: decimal;
+    /* デフォルトの数字スタイルに設定 */
+    padding-left: 20px;
+    /* 左の余白を設定 */
+}
+
+.restaurant-content img {
+    width: 250px; /* 画像のサイズを少し大きく調整 */
+    height: auto; /* アスペクト比を保持 */
+}
+
+iframe {
+    width: 100%; /* 親要素の幅に合わせる */
+    max-width: 600px; /* 最大幅を600pxに設定 */
+    height: 400px; /* 高さを400pxに設定 */
+    border-radius: 8px; /* 角を丸くする */
+    border: none; /* ボーダーをなくす */
+}
