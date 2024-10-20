@@ -1,5 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    font-size: large;
+}
+header {
+    background-color: #1cda22;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    color: #333;
+    text-align: center;
+}
+.facility {
+    margin-bottom: 20px;
+}
+.facility img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+.facility p {
+    color: #353535;
+    line-height: 1.6;
+    margin-bottom: 50px;
+}
+
 html 
-.container{
+.cont{
     width: 90%;
     max-width: 1120px;
     background-color: antiquewhite;
@@ -19,37 +56,4 @@ header{
 .logo{
     font-size: 24px;
     font-weight: 700;
-}
-
-/*これより上触れるな*/
-
-/*これより下を変更情報として追記する*/
-
-table{
-    width: 100%;
-    overflow-x: auto;
-    border-collapse: collapse;
-    border: solid 2px #595959;
-    font-size: x-large;
-}
-td, th {
-    padding: 5px;
-    width: 200px;
-    text-align: left;
-    border: solid 1px #595959;
-}
-td{
-    vertical-align: middle;
-    text-align: center;
-}
-th {
-    background: antiquewhite;
-}
-
-a:focus{
-    outline: 3px solid #ffcc00;
-}
-
-div.expl{
-    font-size: x-large;
 }
