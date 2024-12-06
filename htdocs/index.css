@@ -1,0 +1,167 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 6em;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#center {
+    text-align: center;
+}
+
+.main-image img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.images {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+}
+
+.image {
+    width: 45%;
+    position: relative;
+}
+/* 仮 */
+.image img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.image p {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: left;
+    white-space: normal;
+}
+/* 仮ここまで */
+
+body {
+    background-color: #F33;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Rounded M+ 1c', sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+
+
+/*仮実装（タブレットはOK）*/
+
+/* PC用のCSSはメディアクエリの外に記述する */
+
+@media screen and (max-width: 959px) {
+    /* 959px以下に適用されるCSS（タブレット用） */
+
+    h1 {
+        font-size: 3.5em;
+        /* タブレット用にフォントサイズを小さく */
+    }
+
+    .image {
+        width: 48%;
+        /* 画像を少し大きくして並びを調整 */
+    }
+
+    .image p {
+        margin-top: 15px;
+        /* タブレットで余白を少し減らす */
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+        /* スマホ用にフォントサイズを小さく */
+        line-height: 1.2;
+        /* 見出しの行間を狭く */
+    }
+
+    h2{
+        font-size: 1.8em; 
+        margin-bottom: 8px;
+        text-align: left;
+    }
+
+    .images {
+        flex-direction: column;
+        /* 画像を縦並びに変更 */
+        align-items: center;
+    }
+
+    .image {
+        width: 100%;
+        /* スマホでは画像を1列に表示 */
+        margin-bottom: 15px;
+        /* 画像間のスペースを確保 */
+    }
+
+    .image p {
+        margin-top: 10px;
+        /* 余白を減らす */
+    }
+
+   
+}
+    .btn,
+    a.btn,
+    button.btn {
+        width: 50%; /* 横幅を画面サイズに調整 */
+        height: 200px; /* 高さを固定して縮小 */
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 4;
+        position: relative;
+        display: inline-block;
+        padding: 1rem 4rem;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        color: #212529;
+        border-radius: 0.5rem;
+}
+    .btn--orange,
+    a.btn--orange {
+        color: #fff;
+        background-color: #eb6100;
+        }
+        .btn--orange:hover,
+        a.btn--orange:hover {
+        color: #fff;
+        background: #f56500;
+        }
+
+        a.btn--radius {
+        border-radius: 100vh;
+}
