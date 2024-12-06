@@ -10,6 +10,10 @@ h1 {
     font-family:Arial, sans-serif;
 }
 
+#center {
+    text-align: center;
+}
+
 .main-image img {
     width: 100%;
     max-width: 800px; 
