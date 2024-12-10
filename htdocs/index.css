@@ -4,6 +4,10 @@
     padding: 20px;
 }
 
+.container div {
+    text-align: center;
+}
+
 h2 {
     font-size: 3em;
     margin-bottom: 20px;
