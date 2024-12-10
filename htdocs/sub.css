@@ -26,8 +26,12 @@ h3 {
 }
 
 
-#center {
+.center {
     text-align: center;
+}
+
+.blue{
+    color: blue;
 }
 
 figure {
