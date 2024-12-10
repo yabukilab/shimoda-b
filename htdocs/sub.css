@@ -4,6 +4,9 @@
     align-items: center;
 }
 
+.container div {
+    text-align: center;
+}
 
 h1 {
     font-size: 5em; 
