@@ -30,9 +30,6 @@ h3 {
     text-align: center;
 }
 
-.blue{
-    color: blue;
-}
 
 figure {
     display: block; 
@@ -112,5 +109,13 @@ a:visited {
         width: auto; 
         height: auto; 
         margin: auto;
+    }
+
+    .container a:link {
+        color: #00E;
+    }
+
+    .container a:visited {
+        color: #551A8B;
     }
 }
