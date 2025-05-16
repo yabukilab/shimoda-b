@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 
--- サーバのバージョン： 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- ホスト: 127.0.0.1
+-- 生成日時: 2025-05-16 08:50:01
+-- サーバのバージョン： 10.4.32-MariaDB
+-- PHP のバージョン: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,10 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `study`
+-- データベース: `study`
 --
-CREATE DATABASE IF NOT EXISTS `study` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `study`;
 
 -- --------------------------------------------------------
 
@@ -32,7 +29,7 @@ USE `study`;
 
 CREATE TABLE `mst_product` (
   `code` int(11) NOT NULL,
-  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(30) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -42,27 +39,28 @@ CREATE TABLE `mst_product` (
 
 INSERT INTO `mst_product` (`code`, `name`, `price`) VALUES
 (1, 'きゃべつ', 100),
-(2, 'とまと', 1000);
+(2, 'とまと', 1000),
+(3, 'レタス', 300);
 
 --
--- Indexes for dumped tables
+-- ダンプしたテーブルのインデックス
 --
 
 --
--- Indexes for table `mst_product`
+-- テーブルのインデックス `mst_product`
 --
 ALTER TABLE `mst_product`
   ADD PRIMARY KEY (`code`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- ダンプしたテーブルの AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `mst_product`
+-- テーブルの AUTO_INCREMENT `mst_product`
 --
 ALTER TABLE `mst_product`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
