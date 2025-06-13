@@ -33,7 +33,7 @@ CREATE TABLE `stores` (
   `holidays` varchar(255) NOT NULL,
   `notes` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `stores` (
 
 LOCK TABLES `stores` WRITE;
 /*!40000 ALTER TABLE `stores` DISABLE KEYS */;
-INSERT INTO `stores` VALUES (1,'カフェさくら','津田沼','千葉県船橋市前原西2-21-1','food','credit,qr,cash','10:00〜20:00','火曜日','自家製スイーツが人気です。'),(2,'グリーンマーケット','習志野','千葉県習志野市津田沼4-8-15','retail','qr,emoney','9:00〜18:00','日曜日','地元野菜を扱っています。'),(3,'リラックス整体院','船橋','千葉県船橋市本町3-12-5','service','credit,emoney','11:00〜22:00','水曜日','完全予約制'),(4,'アジアンレストラン タイサバイ','津田沼','千葉県船橋市前原東3-7-8','food','credit,qr,emoney,cash','11:30〜15:00, 17:00〜22:00','月曜日','英語メニューあり'),(5,'cut純','東京','足立区','service','credit,qr,emoney,cash','10:00~20:00','毎週水曜日','');
+INSERT INTO `stores` VALUES (1,'カフェさくら','津田沼','千葉県船橋市前原西2-21-1','food','credit,qr,cash','10:00〜20:00','火曜日','自家製スイーツが人気です。'),(2,'グリーンマーケット','習志野','千葉県習志野市津田沼4-8-15','retail','qr,emoney','9:00〜18:00','日曜日','地元野菜を扱っています。'),(3,'リラックス整体院','船橋','千葉県船橋市本町3-12-5','service','credit,emoney','11:00〜22:00','水曜日','完全予約制'),(4,'アジアンレストラン タイサバイ','津田沼','千葉県船橋市前原東3-7-8','food','credit,qr,emoney,cash','11:30〜15:00, 17:00〜22:00','月曜日','英語メニューあり'),(5,'cut純','東京','足立区','service','credit,qr,emoney,cash','10:00~20:00','毎週水曜日',''),(6,'あ','あ','あ','retail','credit','あ','あ','あ'),(7,'え','え','え','food','emoney','え','え','');
 /*!40000 ALTER TABLE `stores` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-12 13:47:01
+-- Dump completed on 2025-06-13 17:57:16
