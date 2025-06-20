@@ -35,7 +35,7 @@ require_once 'db_connect.php';
         } else {
             foreach ($results as $store) {
                 echo "<div style='border:1px solid #ccc; padding:10px; margin-bottom:10px;'>";
-                echo "<strong>店舗名：</strong>" . htmlspecialchars($store['name'], ENT_QUOTES, 'UTF-8') . "<br>";
+                echo "<strong>店舗名：</strong>" . htmlspecialchars($store['store_name'], ENT_QUOTES, 'UTF-8') . "<br>";
                 echo "<strong>地域：</strong>" . htmlspecialchars($store['area'], ENT_QUOTES, 'UTF-8') . "<br>";
                 echo "<strong>住所：</strong>" . htmlspecialchars($store['address'], ENT_QUOTES, 'UTF-8') . "<br>";
 
