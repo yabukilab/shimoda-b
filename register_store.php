@@ -1,7 +1,3 @@
-<?php
-require_once 'db_connect.php';
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,30 +5,6 @@ require_once 'db_connect.php';
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>店舗情報登録</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
-  <style>
-    form > label, form > fieldset {
-      margin-bottom: 1em;
-    }
-    fieldset label {
-      display: block;
-      margin-top: 0.5em;
-    }
-    .store-card {
-      border: 1px solid #ccc;
-      padding: 1em;
-      margin-bottom: 1.5em;
-      border-radius: 6px;
-      background: #f6f6f6;
-    }
-    .store-card p {
-      margin: 0.2em 0;
-    }
-    .button-group {
-      display: flex;
-      gap: 1em;
-      margin-top: 1em;
-    }
-  </style>
 </head>
 <body>
 <main class="container">
@@ -65,7 +37,7 @@ require_once 'db_connect.php';
     </label>
 
     <fieldset>
-      <legend>対応している決済方法（1つ以上選択）</legend>
+      <legend>対応している決済方法</legend>
       <label><input type="checkbox" name="payment_methods[]" value="credit"> クレジットカード</label>
       <label><input type="checkbox" name="payment_methods[]" value="qr"> QRコード決済</label>
       <label><input type="checkbox" name="payment_methods[]" value="emoney"> 電子マネー</label>
@@ -74,12 +46,12 @@ require_once 'db_connect.php';
 
     <label>
       営業時間
-      <input type="text" name="hours" required>
+      <input type="text" name="hours">
     </label>
 
     <label>
       定休日
-      <input type="text" name="holidays" required>
+      <input type="text" name="holidays">
     </label>
 
     <label>
@@ -90,45 +62,10 @@ require_once 'db_connect.php';
     <button type="submit">登録する</button>
   </form>
 
-  <hr>
-  <h2>登録済み店舗一覧（編集・削除）</h2>
-
-  <?php
-  try {
-      $stmt = $pdo->query("SELECT * FROM stores ORDER BY id DESC");
-      $results = $stmt->fetchAll();
-
-      if (count($results) === 0) {
-          echo "<p>現在登録されている店舗情報はありません。</p>";
-      } else {
-          foreach ($results as $store) {
-              echo "<div class='store-card'>";
-              echo "<p><strong>店舗名：</strong>" . htmlspecialchars($store['store_name'], ENT_QUOTES, 'UTF-8') . "</p>";
-              echo "<p><strong>地域：</strong>" . htmlspecialchars($store['area'], ENT_QUOTES, 'UTF-8') . "</p>";
-              echo "<p><strong>住所：</strong>" . htmlspecialchars($store['address'], ENT_QUOTES, 'UTF-8') . "</p>";
-              echo "<div class='button-group'>";
-
-              // 編集ボタン
-              echo "<form action='update_store.php' method='get'>";
-              echo "<input type='hidden' name='id' value='" . htmlspecialchars($store['id'], ENT_QUOTES, 'UTF-8') . "'>";
-              echo "<button type='submit'>編集</button>";
-              echo "</form>";
-
-              // 削除ボタン
-              echo "<form action='delete_store.php' method='get' onsubmit=\"return confirm('この店舗情報を削除しますか？');\">";
-              echo "<input type='hidden' name='id' value='" . htmlspecialchars($store['id'], ENT_QUOTES, 'UTF-8') . "'>";
-              echo "<button type='submit' class='secondary'>削除</button>";
-              echo "</form>";
-
-              echo "</div></div>";
-          }
-      }
-  } catch (PDOException $e) {
-      echo "<p>一覧表示エラー: " . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . "</p>";
-  }
-  ?>
-
-  <p><a href="index.php">ホームに戻る</a></p>
+  <!-- トップページに戻るボタンを追加 -->
+  <p style="margin-top: 1em;">
+    <a href="index.php" role="button">トップページに戻る</a>
+  </p>
 </main>
 </body>
 </html>
