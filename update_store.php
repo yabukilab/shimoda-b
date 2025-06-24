@@ -1,36 +1,98 @@
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=payment_search;charset=utf8mb4", "root", "");
+require_once 'db_connect.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $id = $_POST["id"];
-    $store_name = $_POST["shop_name"];
-    $area = $_POST["area"];
-    $payment = $_POST["payment"];
-    $category = $_POST["category"];
-
-    $stmt = $pdo->prepare("UPDATE stores SET store_name=?, area=?, payment_methods=?, category=? WHERE id=?");
-    $stmt->execute([$store_name, $area, $payment, $category, $id]);
-
-    echo "店舗情報を更新しました。<br><a href='update_store.php'>戻る</a>";
-    exit;
+if (!isset($_GET['id'])) {
+    die('IDが指定されていません。');
 }
 
-$shops = $pdo->query("SELECT * FROM stores")->fetchAll(PDO::FETCH_ASSOC);
+$id = (int) $_GET['id'];
+
+try {
+    $stmt = $pdo->prepare("SELECT * FROM stores WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    $store = $stmt->fetch();
+
+    if (!$store) {
+        die('店舗が見つかりません。');
+    }
+
+} catch (PDOException $e) {
+    die('データベースエラー: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8'));
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="UTF-8"><title>店舗情報更新</title></head>
+<head>
+    <meta charset="UTF-8">
+    <title>店舗情報の編集</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+</head>
 <body>
-<h2>店舗情報更新</h2>
-<?php foreach ($shops as $shop): ?>
-<form method="POST">
-  <input type="hidden" name="id" value="<?= $shop["id"] ?>">
-  店舗名: <input type="text" name="shop_name" value="<?= $shop["store_name"] ?>"><br>
-  地域: <input type="text" name="area" value="<?= $shop["area"] ?>"><br>
-  決済方法: <input type="text" name="payment" value="<?= $shop["payment_methods"] ?>"><br>
-  業種: <input type="text" name="category" value="<?= $shop["category"] ?>"><br>
-  <button type="submit">更新</button>
-</form><hr>
-<?php endforeach; ?>
+<main class="container">
+    <h1>店舗情報を編集する</h1>
+
+    <form method="POST" action="update_store_process.php">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($store['id'], ENT_QUOTES, 'UTF-8') ?>">
+
+        <label>
+            店舗名
+            <input type="text" name="store_name" value="<?= htmlspecialchars($store['store_name'], ENT_QUOTES, 'UTF-8') ?>" required>
+        </label>
+
+        <label>
+            地域
+            <input type="text" name="area" value="<?= htmlspecialchars($store['area'], ENT_QUOTES, 'UTF-8') ?>" required>
+        </label>
+
+        <label>
+            住所
+            <input type="text" name="address" value="<?= htmlspecialchars($store['address'], ENT_QUOTES, 'UTF-8') ?>" required>
+        </label>
+
+        <label>
+            業種
+            <select name="category" required>
+                <option value="">業種を選択</option>
+                <option value="food" <?= $store['category'] === 'food' ? 'selected' : '' ?>>飲食</option>
+                <option value="retail" <?= $store['category'] === 'retail' ? 'selected' : '' ?>>小売</option>
+                <option value="service" <?= $store['category'] === 'service' ? 'selected' : '' ?>>サービス</option>
+            </select>
+        </label>
+
+        <fieldset>
+            <legend>決済方法</legend>
+            <?php
+            $methods = explode(',', $store['payment_methods']);
+            function isChecked($val, $methods) {
+                return in_array($val, $methods) ? 'checked' : '';
+            }
+            ?>
+            <label><input type="checkbox" name="payment_methods[]" value="credit" <?= isChecked('credit', $methods) ?>> クレジットカード</label>
+            <label><input type="checkbox" name="payment_methods[]" value="qr" <?= isChecked('qr', $methods) ?>> QRコード決済</label>
+            <label><input type="checkbox" name="payment_methods[]" value="emoney" <?= isChecked('emoney', $methods) ?>> 電子マネー</label>
+            <label><input type="checkbox" name="payment_methods[]" value="cash" <?= isChecked('cash', $methods) ?>> 現金</label>
+        </fieldset>
+
+        <label>
+            営業時間
+            <input type="text" name="hours" value="<?= htmlspecialchars($store['hours'], ENT_QUOTES, 'UTF-8') ?>" required>
+        </label>
+
+        <label>
+            定休日
+            <input type="text" name="holidays" value="<?= htmlspecialchars($store['holidays'], ENT_QUOTES, 'UTF-8') ?>" required>
+        </label>
+
+        <label>
+            備考
+            <textarea name="notes"><?= htmlspecialchars($store['notes'], ENT_QUOTES, 'UTF-8') ?></textarea>
+        </label>
+
+        <button type="submit">更新する</button>
+    </form>
+
+    <p><a href="register_store.php">← 店舗一覧に戻る</a></p>
+</main>
 </body>
 </html>
