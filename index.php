@@ -47,7 +47,7 @@ $is_en = ($lang === 'en');
   <ul>
     <li>
       <a href="?lang=<?= $is_en ? 'ja' : 'en' ?>" role="button">
-        <?= $is_en ? '日本語へ' : 'English' ?>
+        <?= $is_en ? '日本語' : 'English' ?>
       </a>
     </li>
   </ul>
