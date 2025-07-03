@@ -92,7 +92,7 @@ try {
         <button type="submit">更新する</button>
     </form>
 
-    <p><a href="register_store.php">← 店舗一覧に戻る</a></p>
+    <p><a href="register_store.php">← 店舗情報登録に戻る</a></p>
 </main>
 </body>
 </html>
