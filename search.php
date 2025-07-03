@@ -14,7 +14,7 @@ $category = $_GET['category'] ?? '';
 if ($shop_name === '' && $area === '' && $payment === '' && $category === '') {
     $error_message = $is_en
         ? 'Please enter at least one search condition'
-        : '検索条件を1つ以上入力してください';
+        : '1つ以上の検索条件を入力してください';
     ?>
     <!DOCTYPE html>
     <html lang="<?= $is_en ? 'en' : 'ja' ?>">
