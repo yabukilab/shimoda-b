@@ -67,7 +67,7 @@ try {
     $inserted_id = $pdo->lastInsertId();
 
     // 登録後、詳細ページにリダイレクト
-    header("Location: shop_detail.php?id=$inserted_id&lang=$lang");
+    header("Location: register_complete.php?lang=$lang");
     exit;
 
 } catch (PDOException $e) {
