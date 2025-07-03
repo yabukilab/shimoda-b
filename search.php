@@ -94,7 +94,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($results as $shop): ?>
           <tr>
             <td>
-              <a href="shop_detail.php?id=<?= $shop['id'] ?>&lang=<?= $is_en ? 'en' : 'ja' ?>">
+              <a href="shop_detail.php?id=<?= $shop['id'] ?>&lang=<?= $lang ?>&shop_name=<?= urlencode($shop_name) ?>&area=<?= urlencode($area) ?>&category=<?= urlencode($category) ?>&payment=<?= urlencode($payment) ?>">
                 <?= htmlspecialchars($shop['store_name']) ?>
               </a>
             </td>
