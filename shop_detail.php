@@ -1,63 +1,90 @@
 <?php
 require_once 'db_connect.php';
 
-if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header('Location: error.php');
+$lang = $_GET['lang'] ?? 'ja';
+$is_en = ($lang === 'en');
+
+// 検索条件の取得（戻るリンク用）
+$shop_name = $_GET['shop_name'] ?? '';
+$area = $_GET['area'] ?? '';
+$payment = $_GET['payment'] ?? '';
+$category = $_GET['category'] ?? '';
+
+$id = $_GET['id'] ?? null;
+if (!$id || !is_numeric($id)) {
+    header("Location: error_incomplete.php?lang=$lang");
     exit;
 }
 
-$id = $_GET['id'];
+$stmt = $pdo->prepare("SELECT * FROM stores WHERE id = ?");
+$stmt->execute([$id]);
+$shop = $stmt->fetch(PDO::FETCH_ASSOC);
 
-try {
-    $stmt = $pdo->prepare("SELECT * FROM stores WHERE id = ?");
-    $stmt->execute([$id]);
-    $store = $stmt->fetch();
+if (!$shop) {
+    header("Location: error_incomplete.php?lang=$lang");
+    exit;
+}
 
-    if (!$store) {
-        header('Location: error.php');
+// 必須項目が空ならエラーに遷移（備考は除く）
+$required_fields = ['store_name', 'area', 'address', 'category', 'payment_methods', 'hours', 'holidays'];
+foreach ($required_fields as $field) {
+    if (empty($shop[$field])) {
+        header("Location: error_incomplete.php?lang=$lang");
         exit;
     }
-} catch (PDOException $e) {
-    echo "データベースエラー: " . $e->getMessage();
-    exit;
 }
+
+$category_dict = [
+  'food' => ['ja' => '飲食', 'en' => 'Food & Drink'],
+  'retail' => ['ja' => '小売', 'en' => 'Retail'],
+  'service' => ['ja' => 'サービス', 'en' => 'Service'],
+];
+
+$payments_dict = [
+  'credit' => ['ja' => 'クレジットカード', 'en' => 'Credit Card'],
+  'qr' => ['ja' => 'QRコード決済', 'en' => 'QR Code Payment'],
+  'emoney' => ['ja' => '電子マネー', 'en' => 'E-Money'],
+  'cash' => ['ja' => '現金', 'en' => 'Cash'],
+];
+
+$translated_payments = array_map(function($p) use ($payments_dict, $is_en) {
+    return $payments_dict[trim($p)][$is_en ? 'en' : 'ja'] ?? $p;
+}, explode(',', $shop['payment_methods']));
 ?>
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="<?= $is_en ? 'en' : 'ja' ?>">
 <head>
-    <meta charset="UTF-8">
-    <title>店舗詳細情報</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><?= $is_en ? 'Store Details' : '店舗詳細' ?></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
 </head>
 <body>
-    <h1>店舗詳細情報</h1>
+<main class="container">
+  <h2><?= htmlspecialchars($shop['store_name']) ?></h2>
 
-    <ul>
-        <li><strong>店舗名：</strong> <?php echo htmlspecialchars($store['name'], ENT_QUOTES, 'UTF-8'); ?></li>
-        <li><strong>地域：</strong> <?php echo htmlspecialchars($store['area'], ENT_QUOTES, 'UTF-8'); ?></li>
-        <li><strong>住所：</strong> <?php echo htmlspecialchars($store['address'], ENT_QUOTES, 'UTF-8'); ?></li>
-        <li><strong>業種：</strong> <?php echo htmlspecialchars($store['category'], ENT_QUOTES, 'UTF-8'); ?></li>
-        <li><strong>決済方法：</strong> <?php echo htmlspecialchars($store['payment_methods'], ENT_QUOTES, 'UTF-8'); ?></li>
-        <li><strong>営業時間：</strong> <?php echo htmlspecialchars($store['business_hours'], ENT_QUOTES, 'UTF-8'); ?></li>
-        <li><strong>定休日：</strong> <?php echo htmlspecialchars($store['holidays'], ENT_QUOTES, 'UTF-8'); ?></li>
-        <li><strong>備考：</strong> <?php echo nl2br(htmlspecialchars($store['notes'], ENT_QUOTES, 'UTF-8')); ?></li>
-    </ul>
+  <ul>
+    <li><?= $is_en ? 'Area' : '地域' ?>: <?= htmlspecialchars($shop['area']) ?></li>
+    <li><?= $is_en ? 'Address' : '住所' ?>: <?= htmlspecialchars($shop['address']) ?></li>
+    <li><?= $is_en ? 'Category' : '業種' ?>: <?= $category_dict[$shop['category']][$is_en ? 'en' : 'ja'] ?></li>
+    <li><?= $is_en ? 'Payment Methods' : '決済方法' ?>: <?= implode(', ', $translated_payments) ?></li>
+    <li><?= $is_en ? 'Business Hours' : '営業時間' ?>: <?= htmlspecialchars($shop['hours']) ?></li>
+    <li><?= $is_en ? 'Holidays' : '定休日' ?>: <?= htmlspecialchars($shop['holidays']) ?></li>
+    <?php if (!empty($shop['notes'])): ?>
+      <li><?= $is_en ? 'Notes' : '備考' ?>: <?= nl2br(htmlspecialchars($shop['notes'])) ?></li>
+    <?php endif; ?>
+  </ul>
 
-    <!-- 編集ボタン -->
-    <form action="update_store.php" method="get" style="margin-top: 20px;">
-        <input type="hidden" name="id" value="<?php echo $store['id']; ?>">
-        <button type="submit" style="padding:8px 16px; background:#007bff; color:#fff; border:none; border-radius:4px;">
-            編集する
-        </button>
-    </form>
+  <!-- 検索結果に戻るリンク -->
+  <a href="search.php?lang=<?= $lang ?>&shop_name=<?= urlencode($shop_name) ?>&area=<?= urlencode($area) ?>&category=<?= urlencode($category) ?>&payment=<?= urlencode($payment) ?>" role="button">
+    <?= $is_en ? 'Back to Search Results' : '検索結果に戻る' ?>
+  </a><br>
 
-    <!-- 削除ボタン（確認ダイアログ付き） -->
-    <form action="delete_store.php" method="get" onsubmit="return confirm('この店舗情報を本当に削除してもよろしいですか？');" style="margin-top: 10px;">
-        <input type="hidden" name="id" value="<?php echo $store['id']; ?>">
-        <button type="submit" style="padding:8px 16px; background:#dc3545; color:#fff; border:none; border-radius:4px;">
-            削除する
-        </button>
-    </form>
-
+  <!-- トップページに戻る -->
+  <a href="index.php?lang=<?= $lang ?>" role="button" style="margin-top: 1em;">
+    <?= $is_en ? 'Back to Top Page' : 'トップページに戻る' ?>
+  </a>
+</main>
 </body>
 </html>
