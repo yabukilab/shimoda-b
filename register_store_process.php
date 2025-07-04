@@ -15,7 +15,7 @@ $holidays = isset($_POST['holidays']) ? trim($_POST['holidays']) : '';
 $notes = isset($_POST['notes']) ? trim($_POST['notes']) : '';
 $lang = $_POST['lang'] ?? 'ja';
 
-// バリデーション（必須チェック）
+// 必須入力チェック
 if ($store_name === '' || $area === '' || $category === '') {
     $_SESSION['error'] = "店舗名、地域、業種はすべて入力必須です。";
     header("Location: error.php");
@@ -37,21 +37,37 @@ if ($holidays === '') {
     exit;
 }
 
+// ✅ 営業時間フォーマットチェック（数字、~、: のみ許可）
+if (!preg_match('/^[0-9:~\- ]+$/', $hours)) {
+    $_SESSION['error'] = "営業時間には数字と「~」「:」「-」のみを使用してください。";
+    header("Location: error.php");
+    exit;
+}
+
+// ✅ 住所の不適切チェック
+if (
+    mb_strlen($address, 'UTF-8') < 5 ||
+    !preg_match('/[市区町村]/u', $address) ||
+    preg_match('/(不明|なし|123|abc|テスト|xxx|\?{2,})/iu', $address)
+) {
+    $_SESSION['error'] = "その住所は不適切です。";
+    header("Location: error.php");
+    exit;
+}
+
 // 決済方法をカンマ区切りの文字列に変換
 $payment_methods_str = implode(',', $payment_methods);
 
-// データベース接続情報
+// データベース接続
 require_once 'db_connect.php';
 
 try {
-    // INSERT文の準備
     $stmt = $pdo->prepare(
         'INSERT INTO stores 
         (store_name, area, address, category, payment_methods, hours, holidays, notes) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
     );
 
-    // 実行
     $stmt->execute([
         $store_name,
         $area,
@@ -63,11 +79,8 @@ try {
         $notes
     ]);
 
-    // 挿入されたIDを取得
     $inserted_id = $pdo->lastInsertId();
-
-    // 登録後、詳細ページにリダイレクト
-    header("Location: register_complete.php?lang=$lang");
+    header("Location: register_complete.php?id=$inserted_id&lang=$lang");
     exit;
 
 } catch (PDOException $e) {
