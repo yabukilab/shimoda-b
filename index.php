@@ -68,24 +68,52 @@ $is_en = ($lang === 'en');
       </p>
 
       <form method="GET" action="search.php" class="grid">
-        <input type="hidden" name="lang" value="<?= $is_en ? 'en' : 'ja' ?>">
-        <input type="text" name="shop_name" placeholder="<?= $is_en ? 'Enter store name' : '店舗名を入力' ?>" aria-label="店舗名">
-        <input type="text" name="area" placeholder="<?= $is_en ? 'Enter area (e.g., Tsudanuma)' : '地域を入力' ?>" aria-label="地域">
-        <select name="payment" aria-label="決済方法">
-          <option value=""><?= $is_en ? 'Select payment method' : '決済方法を選択' ?></option>
-          <option value="credit"><?= $is_en ? 'Credit Card' : 'クレジットカード' ?></option>
-          <option value="qr"><?= $is_en ? 'QR Code' : 'QRコード決済' ?></option>
-          <option value="emoney"><?= $is_en ? 'E-Money' : '電子マネー' ?></option>
-          <option value="cash"><?= $is_en ? 'Cash' : '現金' ?></option>
-        </select>
-        <select name="category" aria-label="業種">
-          <option value=""><?= $is_en ? 'Select category' : '業種を選択' ?></option>
-          <option value="food"><?= $is_en ? 'Food & Drink' : '飲食' ?></option>
-          <option value="retail"><?= $is_en ? 'Retail' : '小売' ?></option>
-          <option value="service"><?= $is_en ? 'Service' : 'サービス' ?></option>
-        </select>
-        <button type="submit"><?= $is_en ? 'Search' : '検索' ?></button>
-      </form>
+  <input type="hidden" name="lang" value="<?= $is_en ? 'en' : 'ja' ?>">
+  <input type="text" name="shop_name" placeholder="<?= $is_en ? 'Enter store name' : '店舗名を入力' ?>" aria-label="店舗名">
+
+  <!-- 地域セレクト（47都道府県） -->
+  <select name="area" aria-label="地域">
+    <option value=""><?= $is_en ? 'Select area' : '地域を選択' ?></option>
+    <?php
+    $areas = [
+      '北海道' => 'Hokkaido', '青森県' => 'Aomori', '岩手県' => 'Iwate', '宮城県' => 'Miyagi', '秋田県' => 'Akita',
+      '山形県' => 'Yamagata', '福島県' => 'Fukushima', '茨城県' => 'Ibaraki', '栃木県' => 'Tochigi', '群馬県' => 'Gunma',
+      '埼玉県' => 'Saitama', '千葉県' => 'Chiba', '東京都' => 'Tokyo', '神奈川県' => 'Kanagawa', '新潟県' => 'Niigata',
+      '富山県' => 'Toyama', '石川県' => 'Ishikawa', '福井県' => 'Fukui', '山梨県' => 'Yamanashi', '長野県' => 'Nagano',
+      '岐阜県' => 'Gifu', '静岡県' => 'Shizuoka', '愛知県' => 'Aichi', '三重県' => 'Mie', '滋賀県' => 'Shiga',
+      '京都府' => 'Kyoto', '大阪府' => 'Osaka', '兵庫県' => 'Hyogo', '奈良県' => 'Nara', '和歌山県' => 'Wakayama',
+      '鳥取県' => 'Tottori', '島根県' => 'Shimane', '岡山県' => 'Okayama', '広島県' => 'Hiroshima', '山口県' => 'Yamaguchi',
+      '徳島県' => 'Tokushima', '香川県' => 'Kagawa', '愛媛県' => 'Ehime', '高知県' => 'Kochi',
+      '福岡県' => 'Fukuoka', '佐賀県' => 'Saga', '長崎県' => 'Nagasaki', '熊本県' => 'Kumamoto', '大分県' => 'Oita',
+      '宮崎県' => 'Miyazaki', '鹿児島県' => 'Kagoshima', '沖縄県' => 'Okinawa'
+    ];
+    foreach ($areas as $jp => $en) {
+      $value = $is_en ? $en : $jp;
+      $label = $is_en ? $en : $jp;
+      echo "<option value=\"$value\">$label</option>";
+    }
+    ?>
+  </select>
+
+  <!-- 決済方法 -->
+  <select name="payment" aria-label="決済方法">
+    <option value=""><?= $is_en ? 'Select payment method' : '決済方法を選択' ?></option>
+    <option value="credit"><?= $is_en ? 'Credit Card' : 'クレジットカード' ?></option>
+    <option value="qr"><?= $is_en ? 'QR Code' : 'QRコード決済' ?></option>
+    <option value="emoney"><?= $is_en ? 'E-Money' : '電子マネー' ?></option>
+    <option value="cash"><?= $is_en ? 'Cash' : '現金' ?></option>
+  </select>
+
+  <!-- 業種 -->
+  <select name="category" aria-label="業種">
+    <option value=""><?= $is_en ? 'Select category' : '業種を選択' ?></option>
+    <option value="food"><?= $is_en ? 'Food & Drink' : '飲食' ?></option>
+    <option value="retail"><?= $is_en ? 'Retail' : '小売' ?></option>
+    <option value="service"><?= $is_en ? 'Service' : 'サービス' ?></option>
+  </select>
+
+  <button type="submit"><?= $is_en ? 'Search' : '検索' ?></button>
+</form>
 
       <h3><?= $is_en ? 'How to Use' : '使い方' ?></h3>
       <p>
