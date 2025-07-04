@@ -33,7 +33,7 @@ CREATE TABLE `stores` (
   `holidays` varchar(255) NOT NULL,
   `notes` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `stores` (
 
 LOCK TABLES `stores` WRITE;
 /*!40000 ALTER TABLE `stores` DISABLE KEYS */;
-INSERT INTO `stores` VALUES (1,'カフェさくら','津田沼','千葉県船橋市前原西2-21-1','food','credit,qr,cash','10:00〜20:00','火曜日','自家製スイーツが人気です。'),(2,'グリーンマーケット','習志野','千葉県習志野市津田沼4-8-15','retail','qr,emoney','9:00〜18:00','日曜日','地元野菜を扱っています。'),(3,'リラックス整体院','船橋','千葉県船橋市本町3-12-5','service','credit,emoney','11:00〜22:00','水曜日','完全予約制'),(4,'アジアンレストラン タイサバイ','津田沼','千葉県船橋市前原東3-7-8','food','credit,qr,emoney,cash','11:30〜15:00, 17:00〜22:00','月曜日','英語メニューあり'),(5,'cut純','東京','足立区','service','credit,qr,emoney,cash','10:00~20:00','毎週水曜日',''),(6,'あ','あ','あ','retail','credit','あ','あ','あ'),(7,'え','え','え','food','emoney','え','え','');
+INSERT INTO `stores` VALUES (26,'旬菜ダイニング花火','東京都','東京都渋谷区道玄坂2-8-5','food','credit,qr','11:00~23:00','毎週火','旬の和食を提供'),(27,'アオバ電機 秋葉原本店','東京都','東京都千代田区外神田1-12-9','retail','emoney,cash','10:00~20:00','第2水,第4水','最新家電を豊富に揃えています'),(28,'スマイルヘアーサロン','大阪府','大阪府大阪市中央区南船場4-2-11','service','credit,qr,emoney,cash','9:00~19:00','最終日','予約優先、男性歓迎'),(29,'炭火焼鳥とり松','福岡県','福岡県福岡市中央区今泉1-7-15','food','cash','17:00~24:00','毎週月,毎週木','お一人様歓迎のカウンター完備'),(30,'手仕事雑貨つむぎ','京都府','京都府京都市中京区蛸薬師通烏丸東入一蓮社町','retail','credit,emoney','11:00~18:30','毎週水,第3日','和の手工芸品専門店です');
 /*!40000 ALTER TABLE `stores` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-13 17:57:16
+-- Dump completed on 2025-07-04 18:52:39
