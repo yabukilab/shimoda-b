@@ -1,5 +1,5 @@
 <?php
-require_once 'db_connect.php';
+require_once 'db.php';
 
 $lang = $_GET['lang'] ?? 'ja';
 $is_en = ($lang === 'en');
