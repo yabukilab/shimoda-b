@@ -16,7 +16,8 @@ if (!$id || !is_numeric($id)) {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT * FROM stores WHERE id = ?");
+// ✅ $pdo → $db に修正
+$stmt = $db->prepare("SELECT * FROM stores WHERE id = ?");
 $stmt->execute([$id]);
 $shop = $stmt->fetch(PDO::FETCH_ASSOC);
 
