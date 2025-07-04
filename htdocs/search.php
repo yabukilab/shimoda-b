@@ -60,7 +60,7 @@ if ($category !== '') {
     $params[] = $category;
 }
 
-$stmt = $pdo->prepare($sql);
+$stmt = $db->prepare($sql);
 $stmt->execute($params);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -108,7 +108,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 'emoney' => ['ja' => '電子マネー', 'en' => 'E-Money'],
                 'cash' => ['ja' => '現金', 'en' => 'Cash']
               ];
-              $translated = array_map(fn($p) => $labels[$p][$is_en ? 'en' : 'ja'] ?? $p, $payments);
+              $translated = array_map(fn($p) => $labels[trim($p)][$is_en ? 'en' : 'ja'] ?? $p, $payments);
               echo implode(', ', $translated);
               ?>
             </td>
